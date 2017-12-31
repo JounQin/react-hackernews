@@ -1,0 +1,42 @@
+$offset: 126;
+$duration: 1.4s;
+
+.spinner {
+  transition: opacity 0.15s ease;
+  animation: rotator $duration linear infinite;
+  animation-play-state: paused;
+  &.show {
+    animation-play-state: running;
+  }
+}
+
+@keyframes rotator {
+  from {
+    transform: scale(0.5) rotate(0deg);
+  }
+  to {
+    transform: scale(0.5) rotate(270deg);
+  }
+}
+
+.spinner .path {
+  stroke: #ff6600;
+  stroke-dasharray: $offset;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash $duration ease-in-out infinite;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: $offset;
+  }
+  50% {
+    stroke-dashoffset: ($offset/2);
+    transform: rotate(135deg);
+  }
+  to {
+    stroke-dashoffset: $offset;
+    transform: rotate(450deg);
+  }
+}
