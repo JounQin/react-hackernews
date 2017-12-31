@@ -1,8 +1,8 @@
 {
-  "name": "react-study",
+  "name": "react-hackernews",
   "version": "0.0.1",
-  "description": "Let's learn to use React deeply, just do it!",
-  "repository": "git@github.com:JounQin/react-study.git",
+  "description": "HackerNews clone built with React, ReactRouter & Redux, with server-side rendering",
+  "repository": "git@github.com:JounQin/react-hackernews.git",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "scripts": {
@@ -12,6 +12,7 @@
     "build:server": "webpack --config build/server.babel.js --colors --progress",
     "build": "rimraf dist && cross-env DEBUG=1stg:* NODE_ENV=production run-p build:react:client build:react:server build:server",
     "start": "cross-env DEBUG=1stg:* NODE_ENV=production node dist/server",
+    "sync:now": "bash build/sync-now.sh",
     "sync:pull": "bash build/sync-pull.sh",
     "sync:push": "bash build/sync-push.sh",
     "lint": "eslint . --max-warnings=10",
