@@ -29,9 +29,16 @@ const app = new Koa()
 
 let ready, renderer
 
+const MAX_AGE = 1000 * 3600 * 24 * 365 // one year
+
 const middlewares = [
   logger(),
-  mount('/public', serve(resolve('public'))),
+  mount(
+    '/public',
+    serve(resolve('public'), {
+      maxage: MAX_AGE,
+    }),
+  ),
   async (ctx, next) => {
     if (__DEV__) {
       await ready
@@ -112,7 +119,11 @@ if (__DEV__) {
       clientManifest: runtimeRequire(resolve('dist/ssr-client-manifest.json')),
     },
   )
-  middlewares.push(serve(resolve('dist/static')))
+  middlewares.push(
+    serve(resolve('dist/static'), {
+      maxage: MAX_AGE,
+    }),
+  )
 }
 
 app.use(compose(middlewares))
