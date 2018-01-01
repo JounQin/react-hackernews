@@ -10,7 +10,6 @@ import { activeItems, fetchListData } from 'store'
 export default type => {
   @connect(
     (state, props) => ({
-      activeType: state.activeType,
       activeItems: activeItems(state, props.match.params.page),
     }),
     (dispath, props) => ({
@@ -21,7 +20,6 @@ export default type => {
   class ListView extends React.PureComponent {
     static propTypes = {
       activeItems: PropTypes.array.isRequired,
-      activeType: PropTypes.string.isRequired,
       fetchListData: PropTypes.func.isRequired,
     }
 

@@ -41,8 +41,6 @@ HackerNews clone built with React, ReactRouter &amp; Redux, with server-side ren
 
 <img width="973" alt="screen shot 2016-08-11 at 6 06 57 pm" src="https://cloud.githubusercontent.com/assets/499550/17607895/786a415a-5fee-11e6-9c11-45a2cfdf085c.png">
 
-**A detailed Vue SSR guide can be found [here](https://ssr.vuejs.org).**
-
 ## Build Setup
 
 **Requires Node.js 7+**

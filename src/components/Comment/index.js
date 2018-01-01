@@ -12,7 +12,7 @@ const Comment = withSsr(styles)(
     class extends React.PureComponent {
       static propTypes = {
         comments: PropTypes.object.isRequired,
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
       }
 
       displayName = 'Comment'

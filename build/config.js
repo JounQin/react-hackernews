@@ -8,7 +8,7 @@ export const serverHost = 'localhost'
 
 export const serverPort = process.env.PORT || 4000
 
-export const publicPath = __DEV__ ? `http://${serverHost}:${serverPort}/` : ''
+export const publicPath = __DEV__ ? `http://${serverHost}:${serverPort}/` : '/'
 
 export const resolve = (...args) => path.resolve(process.cwd(), ...args)
 

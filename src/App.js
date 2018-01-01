@@ -68,7 +68,7 @@ const routes = [
   },
 ]
 
-export default class App extends React.PureComponent {
+export default class App extends React.Component {
   componentDidMount() {
     shared.appMounted = true
   }
