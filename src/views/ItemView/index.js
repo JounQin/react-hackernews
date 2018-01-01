@@ -90,7 +90,7 @@ export default class ItemView extends React.PureComponent {
           <p className="meta">
             {item.score} points | by{' '}
             <Link to={'/user/' + item.by}>{item.by}</Link>
-            {timeAgo(item.time)} ago
+            {' ' + timeAgo(item.time)} ago
           </p>
         </div>
         <div className="item-view-comments">

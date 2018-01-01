@@ -32,14 +32,17 @@ const Comment = withSsr(styles)(
         return comment ? (
           <li className="comment">
             <div className="by">
-              <Link to={'/user/' + comment.by}>{comment.by}</Link>
-              {timeAgo(comment.time)} ago
+              {comment.by ? (
+                <Link to={'/user/' + comment.by}>{comment.by}</Link>
+              ) : null}
+              {' ' + timeAgo(comment.time)} ago
             </div>
             <div
               className="text"
-              dangerouslySetInnerHTML={{ __html: comment.text }}
+              dangerouslySetInnerHTML={{
+                __html: comment.text || '<del>[Deleted]</del>',
+              }}
             />
-
             {comment.kids && comment.kids.length ? (
               <>
                 <div className={'toggle' + (open ? ' open' : '')}>
