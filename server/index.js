@@ -23,10 +23,10 @@ import {
 const debug = _debug('1stg:server')
 
 const template = __DEV__
-  ? require('pug').renderFile(resolve('src/index.pug'), {
+  ? require('pug').renderFile(resolve('server/template.pug'), {
       pretty: true,
     })
-  : fs.readFileSync(resolve('dist/static/index.html'), 'utf-8')
+  : fs.readFileSync(resolve('dist/template.html'), 'utf-8')
 
 const app = new Koa()
 

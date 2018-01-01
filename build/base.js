@@ -89,7 +89,7 @@ export default {
       context: __dirname,
     }),
     new ExtractTextWebpackPlugin({
-      disable: __DEV__,
+      disable: true, // app.css is too small (0.73 KB gzipped) for now, so disable it
       filename: '[name].[contenthash].css',
     }),
     new FriendlyErrorsWebpackPlugin(),
