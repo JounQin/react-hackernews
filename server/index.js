@@ -33,16 +33,17 @@ const middlewares = [
   logger(),
   mount('/public', serve(resolve('public'))),
   async (ctx, next) => {
-    await ready
+    if (__DEV__) {
+      await ready
+    }
 
-    const { method, url } = ctx
+    const Accept = ctx.get('Accept')
 
     if (
-      method !== 'GET' ||
-      url.lastIndexOf('.') > url.lastIndexOf('/') ||
-      !['*/*', 'text/html'].find(mimeType =>
-        ctx.get('Accept').includes(mimeType),
-      )
+      ctx.method !== 'GET' ||
+      ctx.url.lastIndexOf('.') > ctx.url.lastIndexOf('/') ||
+      (Accept &&
+        !['*/*', 'text/html'].find(mimeType => Accept.includes(mimeType)))
     ) {
       return next()
     }
@@ -53,7 +54,7 @@ const middlewares = [
 
     const { res } = ctx
 
-    const stream = renderer
+    renderer
       .renderToStream(context)
       .on('afterRender', () => {
         ctx.status = context.code || 200
@@ -80,8 +81,7 @@ const middlewares = [
             debug(e.stack)
         }
       })
-
-    stream.pipe(res)
+      .pipe(res)
   },
 ]
 
