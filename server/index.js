@@ -2,11 +2,14 @@ import fs from 'fs'
 
 import _debug from 'debug'
 import Koa from 'koa'
+import cash from 'koa-cash'
 import compose from 'koa-compose'
 import compress from 'koa-compress'
+import convert from 'koa-convert'
 import logger from 'koa-logger'
 import mount from 'koa-mount'
 import serve from 'koa-static'
+import LRU from 'lru-cache'
 import { createBundleRenderer } from 'react-server-renderer'
 
 import {
@@ -31,8 +34,16 @@ let ready, renderer
 
 const MAX_AGE = 1000 * 3600 * 24 * 365 // one year
 
+const cache = LRU(1000)
+
 const middlewares = [
   logger(),
+  convert(
+    cash({
+      get: key => cache.get(key),
+      set: (key, value) => cache.set(key, value),
+    }),
+  ),
   mount(
     '/public',
     serve(resolve('public'), {
@@ -43,6 +54,10 @@ const middlewares = [
     if (__DEV__) {
       await ready
     }
+
+    const cashed = await ctx.cashed()
+
+    if (cashed) return
 
     if (
       ctx.method !== 'GET' ||
@@ -111,15 +126,17 @@ if (__DEV__) {
   ready = readyPromise
   middlewares.push(webpackMiddleware)
 } else {
-  middlewares.splice(1, 0, compress())
-
   renderer = createRenderer(
     runtimeRequire(resolve('dist/ssr-server-bundle.json')),
     {
       clientManifest: runtimeRequire(resolve('dist/ssr-client-manifest.json')),
     },
   )
-  middlewares.push(
+
+  middlewares.splice(
+    2,
+    0,
+    compress(),
     serve(resolve('dist/static'), {
       maxage: MAX_AGE,
     }),
