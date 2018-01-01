@@ -8,7 +8,7 @@ import compress from 'koa-compress'
 import convert from 'koa-convert'
 import logger from 'koa-logger'
 import mount from 'koa-mount'
-import serve from 'koa-static'
+import serve from 'koa-static-cache'
 import LRU from 'lru-cache'
 import { createBundleRenderer } from 'react-server-renderer'
 
@@ -47,7 +47,7 @@ const middlewares = [
   mount(
     '/public',
     serve(resolve('public'), {
-      maxage: MAX_AGE,
+      maxAge: MAX_AGE,
     }),
   ),
   async (ctx, next) => {
@@ -133,14 +133,22 @@ if (__DEV__) {
     },
   )
 
+  const files = {}
+
   middlewares.splice(
     2,
     0,
     compress(),
-    serve(resolve('dist/static'), {
-      maxage: MAX_AGE,
-    }),
+    serve(
+      resolve('dist/static'),
+      {
+        maxAge: MAX_AGE,
+      },
+      files,
+    ),
   )
+
+  files['/service-worker.js'].maxAge = 0
 }
 
 app.use(compose(middlewares))
