@@ -37,13 +37,12 @@ const middlewares = [
       await ready
     }
 
-    const Accept = ctx.get('Accept')
-
     if (
       ctx.method !== 'GET' ||
       ctx.url.lastIndexOf('.') > ctx.url.lastIndexOf('/') ||
-      (Accept &&
-        !['*/*', 'text/html'].find(mimeType => Accept.includes(mimeType)))
+      !['*/*', 'text/html'].find(mimeType =>
+        ctx.get('Accept').includes(mimeType),
+      )
     ) {
       return next()
     }
