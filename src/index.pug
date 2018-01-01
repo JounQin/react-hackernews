@@ -3,8 +3,27 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1, minimal-ui")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    meta(name="theme-color" content="#f60")
     link(rel="apple-touch-icon" sizes="120x120" href="/public/logo-120.png")
     link(rel="shortcut icon" sizes="48x48" href="/public/logo-48.png")
+    link(rel="manifest" href="/public/manifest.json")
     title React Hacknews
+    style.
+      #skip a {
+         position: absolute;
+         left: -10000px;
+         top: auto;
+         width: 1px;
+         height:1 px;
+         overflow: hidden;
+      }
+
+      #skip a:focus {
+         position:static;
+         width:auto;
+         height:auto;
+       }
   body
+    #skip
+      a(href="#app") skip to content
     #app

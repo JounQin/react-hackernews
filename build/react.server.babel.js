@@ -25,6 +25,7 @@ export default merge(base, {
   }),
   plugins: [
     new webpack.DefinePlugin({
+      'process.env.REACT_ENV': '"server"',
       __SERVER__: true,
     }),
     new SSRServerPlugin(),

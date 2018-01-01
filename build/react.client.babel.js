@@ -1,12 +1,13 @@
 import webpack from 'webpack'
 import merge from 'webpack-merge'
 import { SSRClientPlugin } from 'ssr-webpack-plugin'
+import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin'
 
 import { __DEV__, publicPath, resolve } from './config'
 
 import base from './base'
 
-export default merge.smart(base, {
+const clientConfig = merge.smart(base, {
   entry: {
     app: [resolve('src/entry-client.js')],
     vendors: [
@@ -31,6 +32,7 @@ export default merge.smart(base, {
   },
   plugins: [
     new webpack.DefinePlugin({
+      'process.env.REACT_ENV': '"client"',
       __SERVER__: false,
     }),
     new webpack.optimize.CommonsChunkPlugin({
@@ -41,3 +43,36 @@ export default merge.smart(base, {
     }),
   ],
 })
+
+if (!__DEV__) {
+  clientConfig.plugins.push(
+    // auto generate service worker
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'react-hn',
+      filename: 'service-worker.js',
+      minify: true,
+      dontCacheBustUrlsMatching: /./,
+      staticFileGlobsIgnorePatterns: [/\.map$/, /\.json$/],
+      runtimeCaching: [
+        {
+          urlPattern: '/',
+          handler: 'networkFirst',
+        },
+        {
+          urlPattern: /\/(top|new|show|ask|jobs)/,
+          handler: 'networkFirst',
+        },
+        {
+          urlPattern: '/item/:id',
+          handler: 'networkFirst',
+        },
+        {
+          urlPattern: '/user/:id',
+          handler: 'networkFirst',
+        },
+      ],
+    }),
+  )
+}
+
+export default clientConfig

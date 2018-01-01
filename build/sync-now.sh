@@ -4,11 +4,10 @@ set -e
 
 rm -rf sync
 
-mkdir -p sync/src
+mkdir sync
 yarn build
 cp -rf dist sync/dist
 cp -rf public sync/public
-cp src/index.pug sync/src/index.pug
 touch sync/package.json
 node build/now.js
 

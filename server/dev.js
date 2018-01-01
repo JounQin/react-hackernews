@@ -48,7 +48,7 @@ export default cb => {
 
     fs = webpackMiddleware.dev.fileSystem
     clientManifest = JSON.parse(
-      fs.readFileSync(resolve('dist/ssr-client-manifest.json'), 'utf-8'),
+      fs.readFileSync(resolve('dist/ssr-client-manifest.json')),
     )
 
     if (bundle) {

@@ -1,10 +1,12 @@
+import fs from 'fs'
+
 import _debug from 'debug'
 import Koa from 'koa'
 import compose from 'koa-compose'
+import compress from 'koa-compress'
 import logger from 'koa-logger'
 import mount from 'koa-mount'
 import serve from 'koa-static'
-import pug from 'pug'
 import { createBundleRenderer } from 'react-server-renderer'
 
 import {
@@ -17,9 +19,11 @@ import {
 
 const debug = _debug('1stg:server')
 
-const template = pug.renderFile(resolve('src/index.pug'), {
-  pretty: __DEV__,
-})
+const template = __DEV__
+  ? require('pug').renderFile(resolve('src/index.pug'), {
+      pretty: true,
+    })
+  : fs.readFileSync(resolve('dist/static/index.html'), 'utf-8')
 
 const app = new Koa()
 
@@ -100,6 +104,8 @@ if (__DEV__) {
   ready = readyPromise
   middlewares.push(webpackMiddleware)
 } else {
+  middlewares.splice(1, 0, compress())
+
   renderer = createRenderer(
     runtimeRequire(resolve('dist/ssr-server-bundle.json')),
     {
