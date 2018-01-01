@@ -65,7 +65,8 @@ const middlewares = [
         const { status, url } = e
 
         if (url) {
-          ctx.redirect(url)
+          ctx.status = 302
+          ctx.set({ Location: url })
           return res.end()
         }
 
