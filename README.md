@@ -1,4 +1,4 @@
-# react-hn
+# react-hackernews
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/JounQin/react-hackernews.svg)](https://greenkeeper.io/)
 
