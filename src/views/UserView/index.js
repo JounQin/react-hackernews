@@ -7,13 +7,32 @@ import { withSsr, timeAgo } from 'utils'
 
 import styles from './styles'
 
-@withSsr(styles, false)
+const USER_NOT_FOUND = 'User Not Found'
+
 @connect(
   ({ users }) => ({ users }),
   (dispath, props) => ({
     fetchUser: () => dispath(fetchUser(props.match.params.id)),
   }),
 )
+@withSsr(styles, false, self => {
+  const { users, match: { params: { id } } } = self.props
+  const user = users[id]
+
+  if (user) {
+    return id
+  }
+
+  if (user === false) {
+    return USER_NOT_FOUND
+  }
+
+  if (!__SERVER__) {
+    return self.props
+      .fetchUser()
+      .then(() => (self.props.users[id] ? id : USER_NOT_FOUND))
+  }
+})
 export default class UserView extends React.PureComponent {
   static propTypes = {
     match: PropTypes.object.isRequired,

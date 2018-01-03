@@ -11,13 +11,16 @@ import { withSsr, host, timeAgo } from 'utils'
 
 import styles from './styles'
 
-@withSsr(styles, false)
 @connect(
   ({ items }) => ({ items }),
   dispatch => ({
     fetchItems: ids => dispatch(fetchItems(ids)),
   }),
 )
+@withSsr(styles, false, ({ props }) => {
+  const { items, match: { params: { id } } } = props
+  return items[id] && items[id].title
+})
 export default class ItemView extends React.PureComponent {
   static propTypes = {
     items: PropTypes.object.isRequired,

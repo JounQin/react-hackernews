@@ -44,6 +44,9 @@ const cssLoaders = react =>
 export default {
   devtool: __DEV__ && 'cheap-module-source-map',
   resolve: {
+    alias: {
+      lodash: 'lodash-es',
+    },
     extensions: ['.js', '.scss'],
     modules: [resolve('src'), 'node_modules'],
   },

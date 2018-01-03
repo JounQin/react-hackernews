@@ -12,7 +12,7 @@ import 'styles/app'
 const resolver = resolve => asyncComponent({ resolve })
 
 const createListView = id =>
-  resolver(() => import('views/createListView').then(m => m.default(id)))
+  resolver(() => import('views/CreateListView').then(m => m.default(id)))
 
 const routes = [
   {

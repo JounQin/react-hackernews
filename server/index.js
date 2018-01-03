@@ -61,7 +61,7 @@ const middlewares = [
       return next()
     }
 
-    const context = { ctx }
+    const context = { ctx, title: 'React Hackernews' }
 
     ctx.respond = false
 

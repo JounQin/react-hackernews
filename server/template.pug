@@ -1,5 +1,6 @@
 html(lang="en")
   head
+    title {{ title }}
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     meta(name="description" content="HackerNews clone built with React, ReactRouter & Redux, with server-side rendering")
@@ -8,7 +9,6 @@ html(lang="en")
     link(rel="apple-touch-icon" sizes="120x120" href="/public/logo-120.png")
     link(rel="shortcut icon" sizes="48x48" href="/public/logo-48.png")
     link(rel="manifest" href="/public/manifest.json")
-    title React Hacknews
     style.
       #skip a {
          position: absolute;
@@ -18,7 +18,6 @@ html(lang="en")
          height:1 px;
          overflow: hidden;
       }
-
       #skip a:focus {
          position:static;
          width:auto;

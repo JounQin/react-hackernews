@@ -1,3 +1,4 @@
+import { startCase } from 'lodash'
 import p2r from 'path-to-regexp'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -12,7 +13,6 @@ import Item from 'components/Item'
 
 import styles from './styles'
 
-@withSsr(styles, false)
 @connect(
   (state, props) => ({
     activeItems: activeItems(state, props.match.params.page),
@@ -25,6 +25,7 @@ import styles from './styles'
     ensureActiveItems: () => dispatch(ensureActiveItems(page)),
   }),
 )
+@withSsr(styles, false, ({ props }) => startCase(props.type))
 export default class ItemList extends React.PureComponent {
   static propTypes = {
     activeItems: PropTypes.array.isRequired,
