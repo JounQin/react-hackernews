@@ -10,6 +10,8 @@ HackerNews clone built with React, ReactRouter &amp; Redux, with server-side ren
 
 <p align="center">
   <a href="https://react-hn.now.sh" target="_blank" rel="noopener noreferrer">
+    <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fn3ooixsc8j31400p0gn8.jpg" width="700px">
+    <br>
     Live Demo
   </a>
 </p>
@@ -25,11 +27,18 @@ HackerNews clone built with React, ReactRouter &amp; Redux, with server-side ren
   * Automatically inlines CSS used by rendered components only
   * Preload / prefetch resource hints
   * Route-level code splitting
+  * custom dynamic title for SEO
+* Progressive Web App
+  * App manifest
+  * Service worker
+  * 100/100 Lighthouse score
 * Experience
   * Hot-reload in development
   * CSS extraction for production
 
 ## Inspired by
+
+[vue-hackernews-2.0](https://github.com/vuejs/vue-hackernews-2.0)
 
 [vue-server-render](https://ssr.vuejs.org)
 

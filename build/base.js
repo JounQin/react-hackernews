@@ -53,7 +53,10 @@ export const babelLoader = isServer => ({
           '@babel/env',
           {
             modules: false,
-            exclude: ['babel-plugin-transform-regenerator'],
+            exclude: [
+              'babel-plugin-transform-async-to-generator',
+              'babel-plugin-transform-regenerator',
+            ],
           },
         ],
       ],

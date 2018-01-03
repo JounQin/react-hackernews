@@ -13,6 +13,7 @@ const clientConfig = merge.smart(base, {
     vendors: [
       'firebase',
       'history',
+      'lru-cache',
       'react',
       'react-dom',
       'react-redux',
