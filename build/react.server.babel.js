@@ -5,9 +5,9 @@ import { SSRServerPlugin } from 'ssr-webpack-plugin'
 
 import { resolve } from './config'
 
-import base from './base'
+import base, { babelLoader } from './base'
 
-export default merge(base, {
+export default merge.smart(base, {
   entry: resolve('src/entry-server.js'),
   resolve: {
     alias: {
@@ -23,6 +23,9 @@ export default merge(base, {
   externals: nodeExternals({
     whitelist: /\.s?css$/,
   }),
+  module: {
+    rules: [babelLoader(true)],
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.REACT_ENV': '"server"',

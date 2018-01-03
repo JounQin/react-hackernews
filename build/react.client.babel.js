@@ -5,12 +5,14 @@ import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin'
 
 import { __DEV__, publicPath, resolve } from './config'
 
-import base from './base'
+import base, { babelLoader } from './base'
 
 const clientConfig = merge.smart(base, {
   entry: {
     app: [resolve('src/entry-client.js')],
     vendors: [
+      'firebase',
+      'history',
       'react',
       'react-dom',
       'react-redux',
@@ -18,6 +20,8 @@ const clientConfig = merge.smart(base, {
       'react-router-redux',
       'react-router-config',
       'react-router-dom',
+      'redux',
+      'redux-thunk',
     ],
   },
   resolve: {
@@ -29,6 +33,9 @@ const clientConfig = merge.smart(base, {
     publicPath,
     path: resolve('dist/static'),
     filename: `[name].[${__DEV__ ? 'hash' : 'chunkhash'}].js`,
+  },
+  module: {
+    rules: [babelLoader()],
   },
   plugins: [
     new webpack.DefinePlugin({

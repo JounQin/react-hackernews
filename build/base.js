@@ -41,6 +41,26 @@ const cssLoaders = react =>
     ],
   })
 
+export const babelLoader = isServer => ({
+  test: /\.js$/,
+  loader: 'babel-loader',
+  exclude: /node_modules/,
+  options: {
+    cacheDirectory: true,
+    ...(isServer && {
+      presets: [
+        [
+          '@babel/env',
+          {
+            modules: false,
+            exclude: ['babel-plugin-transform-regenerator'],
+          },
+        ],
+      ],
+    }),
+  },
+})
+
 export default {
   devtool: __DEV__ && 'cheap-module-source-map',
   resolve: {
@@ -52,14 +72,6 @@ export default {
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          cacheDirectory: true,
-        },
-      },
       {
         test: /\.pug$/,
         use: [

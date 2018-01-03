@@ -1,10 +1,12 @@
-import webpack from 'webpack'
 import nodeExternals from 'webpack-node-externals'
+import UglifyjsWebpackPlugin from 'uglifyjs-webpack-plugin'
 
 import { resolve } from './config'
 
+import { babelLoader } from './base'
+
 export default {
-  entry: ['regenerator-runtime/runtime', resolve('server/index.js')],
+  entry: resolve('server/index.js'),
   output: {
     path: resolve('dist'),
     filename: 'server.js',
@@ -15,23 +17,7 @@ export default {
   },
   externals: nodeExternals(),
   module: {
-    rules: [
-      {
-        test: /\.js/,
-        loader: 'babel-loader',
-        options: {
-          cacheDirectory: true,
-          presets: [
-            [
-              '@babel/env',
-              {
-                modules: false,
-              },
-            ],
-          ],
-        },
-      },
-    ],
+    rules: [babelLoader(true)],
   },
-  plugins: [new webpack.optimize.UglifyJsPlugin()],
+  plugins: [new UglifyjsWebpackPlugin()],
 }
