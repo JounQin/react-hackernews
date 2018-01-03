@@ -38,12 +38,6 @@ const cache = LRU(1000)
 
 const middlewares = [
   logger(),
-  convert(
-    cash({
-      get: key => cache.get(key),
-      set: (key, value) => cache.set(key, value),
-    }),
-  ),
   mount(
     '/public',
     serve(resolve('public'), {
@@ -53,11 +47,9 @@ const middlewares = [
   async (ctx, next) => {
     if (__DEV__) {
       await ready
+    } else if (await ctx.cashed()) {
+      return
     }
-
-    const cashed = await ctx.cashed()
-
-    if (cashed) return
 
     if (
       ctx.method !== 'GET' ||
@@ -136,7 +128,7 @@ if (__DEV__) {
   const files = {}
 
   middlewares.splice(
-    2,
+    1,
     0,
     compress(),
     serve(
@@ -145,6 +137,12 @@ if (__DEV__) {
         maxAge: MAX_AGE,
       },
       files,
+    ),
+    convert(
+      cash({
+        get: key => cache.get(key),
+        set: (key, value) => cache.set(key, value),
+      }),
     ),
   )
 
