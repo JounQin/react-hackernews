@@ -3,24 +3,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { withRouter } from 'react-router'
 
-const setTitle = (title, self) => {
-  title = typeof title === 'function' ? title.call(self, self) : title
-
-  if (!title) {
-    return
-  }
-
-  if (!__SERVER__) {
-    Promise.resolve(title).then(title => {
-      if (title) {
-        document.title = `React Hackernews | ${title}`
-      }
-    })
-  } else if (self) {
-    self.props.staticContext.title = title = `React Hackernews | ${title}`
-  }
-}
-
 export const withSsr = (styles, router = true, title) => {
   if (typeof router !== 'boolean') {
     title = router
@@ -37,12 +19,31 @@ export const withSsr = (styles, router = true, title) => {
         staticContext: PropTypes.object,
       }
 
+      setTitle() {
+        const t = typeof title === 'function' ? title.call(this, this) : title
+
+        if (!t) {
+          return
+        }
+
+        if (__SERVER__) {
+          this.props.staticContext.title = `React Hackernews | ${t}`
+          return
+        }
+
+        Promise.resolve(t).then(title => {
+          if (title) {
+            document.title = `React Hackernews | ${title}`
+          }
+        })
+      }
+
       componentWillMount() {
-        if (styles && styles.__inject__) {
+        if (styles.__inject__) {
           styles.__inject__(this.props.staticContext)
         }
 
-        setTitle(title, this)
+        this.setTitle()
       }
 
       render() {
