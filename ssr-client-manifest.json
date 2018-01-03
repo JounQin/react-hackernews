@@ -5,13 +5,13 @@
     "1.96a20187bf5059f6a95d.js",
     "2.b073629808e3220726cd.js",
     "vendors.6f2c3a30933998938a7d.js",
-    "app.a88d2af88893decba725.js",
-    "manifest.9463765448320427d83d.js"
+    "app.a82f58327b4459eac1ac.js",
+    "manifest.a513d5ffaceb37189805.js"
   ],
   "initial": [
-    "manifest.9463765448320427d83d.js",
+    "manifest.a513d5ffaceb37189805.js",
     "vendors.6f2c3a30933998938a7d.js",
-    "app.a88d2af88893decba725.js"
+    "app.a82f58327b4459eac1ac.js"
   ],
   "async": [
     "0.830eedf27e80890e3fff.js",

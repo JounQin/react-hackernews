@@ -10,7 +10,7 @@ HackerNews clone built with React, ReactRouter &amp; Redux, with server-side ren
 
 <p align="center">
   <a href="https://react-hn.now.sh" target="_blank" rel="noopener noreferrer">
-    <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fn3ooixsc8j31400p0gn8.jpg" width="700px">
+    <img width="720" alt="react-hackernews" src="https://user-images.githubusercontent.com/8336744/34520639-7bc3334e-f0c4-11e7-94c6-e6ef3b007e7f.png">
     <br>
     Live Demo
   </a>
