@@ -1,9 +1,11 @@
+import { startCase } from 'lodash'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { asyncComponent } from 'react-async-component'
 import { Redirect } from 'react-router'
 import { renderRoutes } from 'react-router-config'
 import { NavLink } from 'react-router-dom'
+import { Transition } from 'react-transition-group'
 
 import { shared } from 'utils'
 
@@ -68,12 +70,44 @@ const routes = [
   },
 ]
 
+const transitionStyles = {
+  entering: {
+    opacity: 0,
+  },
+  entered: {
+    opacity: 1,
+  },
+}
+
 export default class App extends React.Component {
+  state = {
+    loaded: true,
+  }
+
+  loadRoute() {
+    this.setState({
+      loaded: false,
+    })
+  }
+
+  onLoaded() {
+    this.setState({
+      loaded: true,
+    })
+  }
+
+  constructor() {
+    super()
+    this.loadRoute = this.loadRoute.bind(this)
+    this.onLoaded = this.onLoaded.bind(this)
+  }
+
   componentDidMount() {
     shared.appMounted = true
   }
 
   render() {
+    const { loaded } = this.state
     return (
       <>
         <header className="header">
@@ -81,11 +115,11 @@ export default class App extends React.Component {
             <NavLink to="/" exact>
               <img className="logo" src="/public/logo-48.png" alt="logo" />
             </NavLink>
-            <NavLink to="/top">Top</NavLink>
-            <NavLink to="/new">New</NavLink>
-            <NavLink to="/show">Show</NavLink>
-            <NavLink to="/ask">Ask</NavLink>
-            <NavLink to="/job">Jobs</NavLink>
+            {['top', 'new', 'show', 'ask', 'job'].map(route => (
+              <NavLink key={route} to={`/${route}`} onClick={this.loadRoute}>
+                {startCase(route)}
+              </NavLink>
+            ))}
             <a
               className="github"
               href="https://github.com/JounQin/react-hackernews"
@@ -96,7 +130,16 @@ export default class App extends React.Component {
             </a>
           </nav>
         </header>
-        <div className="view">{renderRoutes(routes)}</div>
+        <Transition in={loaded} timeout={loaded ? 200 : 0}>
+          {state => (
+            <div className="view" style={transitionStyles[state]}>
+              {renderRoutes(routes, {
+                loaded,
+                onLoaded: this.onLoaded,
+              })}
+            </div>
+          )}
+        </Transition>
       </>
     )
   }

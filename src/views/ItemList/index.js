@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import { watchList } from 'api'
 import { activeItems, setList, ensureActiveItems, fetchListData } from 'store'
@@ -37,10 +38,14 @@ export default class ItemList extends React.PureComponent {
     history: PropTypes.object.isRequired,
     setList: PropTypes.func.isRequired,
     ensureActiveItems: PropTypes.func.isRequired,
+    onLoaded: PropTypes.func.isRequired,
   }
 
   state = {
+    displayedPage: this.page,
     displayedItems: this.props.activeItems,
+    itemTransition: 'item',
+    transition: 'slide-right',
   }
 
   get page() {
@@ -56,21 +61,49 @@ export default class ItemList extends React.PureComponent {
     return this.page < this.maxPage
   }
 
-  loadItems(to = this.props.match.params.page) {
+  loadItems(to = this.page, from = -1) {
     this.props.fetchListData().then(() => {
+      if (!this._mounted) {
+        return
+      }
+
       if (this.page < 0 || this.page > this.maxPage) {
         this.props.history.replace(`/${this.props.type}`)
         return
       }
 
-      this.setState({
-        displayedPage: to,
-        displayedItems: this.props.activeItems,
-      })
+      const transition =
+        from === -1 ? '' : to > from ? 'slide-left' : 'slide-right'
+
+      this.setState(
+        {
+          displayedPage: -1,
+          itemTransition: '',
+          transition,
+        },
+        () => {
+          setTimeout(() => {
+            {
+              if (!this._mounted) {
+                return
+              }
+
+              this.setState({
+                displayedPage: to,
+                displayedItems: this.props.activeItems,
+              })
+
+              this.props.onLoaded()
+            }
+          }, transition ? 500 : 0)
+        },
+      )
     })
   }
 
   componentDidMount() {
+    this._mounted = true
+
     if (shared.appMounted) {
       this.loadItems()
     }
@@ -91,20 +124,29 @@ export default class ItemList extends React.PureComponent {
       if (!p2r(path).exec(location.pathname)) {
         return
       }
-      setTimeout(() => this.loadItems(this.props.match.params.page, prevPage))
+      setTimeout(() =>
+        this.loadItems(this.props.match.params.page, prevPage || 1),
+      )
     })
   }
 
   componentWillUnmount() {
+    this._mounted = false
     this.unwatchList()
     this.unwatchPage()
   }
 
   render() {
     const { page, maxPage, hasMore } = this
-    const { displayedItems } = this.state
+    const {
+      displayedItems,
+      displayedPage,
+      itemTransition,
+      transition,
+    } = this.state
 
     const { type } = this.props
+
     return (
       <div className="news-view">
         <div className="news-list-nav">
@@ -122,13 +164,30 @@ export default class ItemList extends React.PureComponent {
             <a className="disabled">more &gt;</a>
           )}
         </div>
-        {page > 0 ? (
+        <CSSTransition
+          in={displayedPage > 0}
+          classNames={transition}
+          timeout={transition ? 500 : 0}
+          onEntered={() => {
+            this.setState({
+              itemTransition: 'item',
+            })
+          }}
+        >
           <div className="news-list">
-            <ul>
-              {displayedItems.map(item => <Item key={item.id} item={item} />)}
-            </ul>
+            <TransitionGroup component="ul">
+              {displayedItems.map(item => (
+                <CSSTransition
+                  key={item.id}
+                  classNames={itemTransition}
+                  timeout={itemTransition ? 500 : 0}
+                >
+                  <Item item={item} />
+                </CSSTransition>
+              ))}
+            </TransitionGroup>
           </div>
-        ) : null}
+        </CSSTransition>
       </div>
     )
   }
