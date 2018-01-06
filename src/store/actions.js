@@ -7,14 +7,6 @@ import {
 import TYPES from './types'
 import { activeIds } from './selectors'
 
-export const setCounter = counter => ({
-  type: 'SET_COUNTER',
-  counter,
-})
-
-export const increase = { type: 'INCREMENT' }
-export const decrease = { type: 'DECREMENT' }
-
 export const setActiveType = activeType => ({
   type: TYPES.SET_ACTIVE_TYPE,
   activeType,

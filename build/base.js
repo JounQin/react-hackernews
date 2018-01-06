@@ -103,24 +103,21 @@ export default {
     ],
   },
   plugins: [
-    new webpack.LoaderOptionsPlugin({
-      context: __dirname,
-    }),
-    new ExtractTextWebpackPlugin({
-      disable: true, // app.css is too small (0.73 KB gzipped) for now, so disable it
-      filename: '[name].[contenthash].css',
-    }),
-    new FriendlyErrorsWebpackPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
       __DEV__,
     }),
+    new ExtractTextWebpackPlugin({
+      disable: true,
+      filename: '[name].[contenthash].css',
+    }),
+    new FriendlyErrorsWebpackPlugin(),
     ...(__DEV__
       ? [new webpack.NamedModulesPlugin(), new webpack.NamedChunksPlugin()]
       : [
-          new UglifyjsWebpackPlugin(),
           new webpack.NoEmitOnErrorsPlugin(),
           new webpack.optimize.ModuleConcatenationPlugin(),
+          new UglifyjsWebpackPlugin(),
         ]),
   ],
 }

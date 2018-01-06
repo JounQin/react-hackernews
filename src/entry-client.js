@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { AsyncComponentProvider } from 'react-async-component'
 import asyncBootstrapper from 'react-async-bootstrapper'
 import { hydrate } from 'react-dom'
@@ -20,7 +20,7 @@ if (!__DEV__) {
 
 const AppContainer = __DEV__
   ? require('react-hot-loader').AppContainer
-  : ({ children }) => children
+  : Fragment
 
 const render = () => {
   const app = (

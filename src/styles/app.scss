@@ -22,12 +22,14 @@ a {
   top: 0;
   left: 0;
   right: 0;
+
   .inner {
     max-width: 800px;
     box-sizing: border-box;
     margin: 0px auto;
     padding: 15px 5px;
   }
+
   a {
     color: rgba(255, 255, 255, 0.8);
     line-height: 24px;
@@ -72,7 +74,7 @@ a {
   margin: 0 auto;
   position: relative;
   opacity: 0;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 @media (max-width: 860px) {

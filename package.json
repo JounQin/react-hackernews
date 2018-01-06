@@ -94,7 +94,6 @@
     "@babel/preset-react": "^7.0.0-beta.36",
     "@babel/preset-stage-0": "^7.0.0-beta.36",
     "@babel/register": "^7.0.0-beta.36",
-    "@firebase/app-types": "^0.1.0",
     "apply-loader": "^2.0.0",
     "babel-eslint": "^8.1.2",
     "babel-loader": "^8.0.0-beta.0",

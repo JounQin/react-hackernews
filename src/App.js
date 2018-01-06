@@ -1,11 +1,11 @@
 import { startCase } from 'lodash'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { Fragment } from 'react'
 import { asyncComponent } from 'react-async-component'
 import { Redirect } from 'react-router'
 import { renderRoutes } from 'react-router-config'
-import { NavLink } from 'react-router-dom'
-import { Transition } from 'react-transition-group'
+import { withRouter, NavLink } from 'react-router-dom'
+import { Transition, TransitionGroup } from 'react-transition-group'
 
 import { shared } from 'utils'
 
@@ -79,27 +79,10 @@ const transitionStyles = {
   },
 }
 
-export default class App extends React.Component {
-  state = {
-    loaded: true,
-  }
-
-  loadRoute() {
-    this.setState({
-      loaded: false,
-    })
-  }
-
-  onLoaded() {
-    this.setState({
-      loaded: true,
-    })
-  }
-
-  constructor() {
-    super()
-    this.loadRoute = this.loadRoute.bind(this)
-    this.onLoaded = this.onLoaded.bind(this)
+@withRouter
+export default class App extends React.PureComponent {
+  static propTypes = {
+    location: PropTypes.object.isRequired,
   }
 
   componentDidMount() {
@@ -107,7 +90,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { loaded } = this.state
     return (
       <>
         <header className="header">
@@ -116,7 +98,7 @@ export default class App extends React.Component {
               <img className="logo" src="/public/logo-48.png" alt="logo" />
             </NavLink>
             {['top', 'new', 'show', 'ask', 'job'].map(route => (
-              <NavLink key={route} to={`/${route}`} onClick={this.loadRoute}>
+              <NavLink key={route} to={`/${route}`}>
                 {startCase(route)}
               </NavLink>
             ))}
@@ -130,16 +112,20 @@ export default class App extends React.Component {
             </a>
           </nav>
         </header>
-        <Transition in={loaded} timeout={loaded ? 200 : 0}>
-          {state => (
-            <div className="view" style={transitionStyles[state]}>
-              {renderRoutes(routes, {
-                loaded,
-                onLoaded: this.onLoaded,
-              })}
-            </div>
-          )}
-        </Transition>
+        <TransitionGroup component={Fragment}>
+          <Transition
+            timeout={200}
+            key={this.props.location.pathname.split('/')[1]}
+            mountOnEnter={true}
+            unmountOnExit={true}
+          >
+            {status => (
+              <div className="view" style={transitionStyles[status]}>
+                {renderRoutes(routes)}
+              </div>
+            )}
+          </Transition>
+        </TransitionGroup>
       </>
     )
   }

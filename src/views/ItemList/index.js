@@ -38,7 +38,6 @@ export default class ItemList extends React.PureComponent {
     history: PropTypes.object.isRequired,
     setList: PropTypes.func.isRequired,
     ensureActiveItems: PropTypes.func.isRequired,
-    onLoaded: PropTypes.func.isRequired,
   }
 
   state = {
@@ -92,8 +91,6 @@ export default class ItemList extends React.PureComponent {
                 displayedPage: to,
                 displayedItems: this.props.activeItems,
               })
-
-              this.props.onLoaded()
             }
           }, transition ? 500 : 0)
         },

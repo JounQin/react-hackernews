@@ -1,18 +1,5 @@
 import TYPES from './types'
 
-export const counter = (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
-    case 'DECREMENT':
-      return state - 1
-    case 'SET_COUNTER':
-      return action.counter
-    default:
-      return state
-  }
-}
-
 export const activeType = (state = null, action) => {
   switch (action.type) {
     case TYPES.SET_ACTIVE_TYPE:
@@ -74,4 +61,4 @@ export const lists = (
   }
 }
 
-export default { counter, activeType, itemsPerPage, items, users, lists }
+export default { activeType, itemsPerPage, items, users, lists }

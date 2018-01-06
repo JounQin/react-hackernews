@@ -10,20 +10,6 @@ import base, { babelLoader } from './base'
 const clientConfig = merge.smart(base, {
   entry: {
     app: [resolve('src/entry-client.js')],
-    vendors: [
-      'firebase',
-      'history',
-      'lru-cache',
-      'react',
-      'react-dom',
-      'react-redux',
-      'react-router',
-      'react-router-redux',
-      'react-router-config',
-      'react-router-dom',
-      'redux',
-      'redux-thunk',
-    ],
   },
   resolve: {
     alias: {
@@ -43,8 +29,19 @@ const clientConfig = merge.smart(base, {
       'process.env.REACT_ENV': '"client"',
       __SERVER__: false,
     }),
+    // extract vendor chunks for better caching
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendors', 'manifest'],
+      name: 'vendors',
+      minChunks: ({ context, request }) =>
+        // it's inside node_modules
+        /node_modules/.test(context) &&
+        // and not a CSS file (due to extract-text-webpack-plugin limitation)
+        !/\.css$/.test(request),
+    }),
+    // extract webpack runtime & manifest to avoid vendor chunk hash changing
+    // on every build.
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
     }),
     new SSRClientPlugin({
       filename: '../ssr-client-manifest.json',
