@@ -5773,9 +5773,9 @@ react-redux@^5.0.6:
     loose-envify "^1.1.0"
     prop-types "^15.5.10"
 
-react-router-config@^1.0.0-beta.4:
+react-router-config@JounQin/modules#react-router-config:
   version "1.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/react-router-config/-/react-router-config-1.0.0-beta.4.tgz#d202496dd0eabdf06cf24eb0793031f6891eef01"
+  resolved "https://codeload.github.com/JounQin/modules/tar.gz/8f55e26fbfa3886a569d11c713e3ff1bdedfb840"
 
 react-router-dom@^4.2.2:
   version "4.2.2"

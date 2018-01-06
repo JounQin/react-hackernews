@@ -90,6 +90,7 @@ export default class App extends React.PureComponent {
   }
 
   render() {
+    const { location } = this.props
     return (
       <>
         <header className="header">
@@ -115,13 +116,15 @@ export default class App extends React.PureComponent {
         <TransitionGroup component={Fragment}>
           <Transition
             timeout={200}
-            key={this.props.location.pathname.split('/')[1]}
+            key={location.pathname.split('/')[1]}
             mountOnEnter={true}
             unmountOnExit={true}
           >
             {status => (
               <div className="view" style={transitionStyles[status]}>
-                {renderRoutes(routes)}
+                {renderRoutes(routes, null, {
+                  location,
+                })}
               </div>
             )}
           </Transition>
