@@ -10,13 +10,6 @@ import serverConfig from '../build/react.server.babel'
 
 const debug = _debug('1stg:server:dev')
 
-clientConfig.entry.app.unshift(
-  'webpack-hot-middleware/client',
-  'react-hot-loader/patch',
-)
-
-clientConfig.plugins.unshift(new webpack.HotModuleReplacementPlugin())
-
 export default cb => {
   let _resolve, clientManifest, bundle, fs
 

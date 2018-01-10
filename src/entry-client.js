@@ -42,7 +42,7 @@ const render = () => {
 
 render()
 
-if (module.hot) {
+if (__DEV__) {
   module.hot.accept('App', render)
 }
 

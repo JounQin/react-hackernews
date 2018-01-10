@@ -9,7 +9,7 @@ import base, { babelLoader } from './base'
 
 const clientConfig = merge.smart(base, {
   entry: {
-    app: [resolve('src/entry-client.js')],
+    app: resolve('src/entry-client.js'),
   },
   resolve: {
     alias: {
