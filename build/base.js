@@ -8,12 +8,12 @@ import { NODE_ENV, __DEV__, resolve } from './config'
 const souceMap = __DEV__
 const minimize = !souceMap
 
-const cssLoaders = react =>
+const cssLoaders = manualInject =>
   ExtractTextWebpackPlugin.extract({
     fallback: {
       loader: 'react-style-loader',
       options: {
-        react,
+        manualInject,
       },
     },
     use: [
