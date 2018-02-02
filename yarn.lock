@@ -5441,9 +5441,9 @@ react-server-renderer@^0.2.3:
     serialize-javascript "^1.4.0"
     source-map "^0.6.1"
 
-react-stand-in@^4.0.0-beta.18:
-  version "4.0.0-beta.18"
-  resolved "https://registry.yarnpkg.com/react-stand-in/-/react-stand-in-4.0.0-beta.18.tgz#67d83309ae5d95526a2d1124beaa7ab093085cb2"
+react-stand-in@4.0.0-beta.13, react-stand-in@^4.0.0-beta.18:
+  version "4.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/react-stand-in/-/react-stand-in-4.0.0-beta.13.tgz#70b9dfe15b573a664bd1927a45bb67fb04de0ad7"
   dependencies:
     shallowequal "^1.0.2"
 
