@@ -4,9 +4,9 @@
 [![Travis](https://img.shields.io/travis/JounQin/react-hackernews.svg)](https://travis-ci.org/JounQin/react-hackernews)
 [![David](https://img.shields.io/david/JounQin/react-hackernews.svg)](https://david-dm.org/JounQin/react-hackernews)
 [![David Dev](https://img.shields.io/david/dev/JounQin/react-hackernews.svg)](https://david-dm.org/JounQin/react-hackernews?type=dev)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-HackerNews clone built with React, ReactRouter &amp; Redux, with server-side rendering
+HackerNews clone built with React, ReactRouter &amp; Redux, with full page server-side rendering
 
 <p align="center">
   <a href="https://react-hn.now.sh" target="_blank" rel="noopener noreferrer">
@@ -40,7 +40,7 @@ HackerNews clone built with React, ReactRouter &amp; Redux, with server-side ren
 
 [vue-hackernews-2.0](https://github.com/vuejs/vue-hackernews-2.0)
 
-[vue-server-render](https://ssr.vuejs.org)
+[vue-server-renderer](https://ssr.vuejs.org)
 
 [react-async-component](https://github.com/ctrlplusb/react-async-component)
 
@@ -48,7 +48,7 @@ HackerNews clone built with React, ReactRouter &amp; Redux, with server-side ren
 
 [react-server-renderer](https://github.com/JounQin/react-server-renderer)
 
-[react-style-loader](https://github.com/JounQin/react-style-loader)
+[react-style-loader](https://github.com/JounQin/react-style-loader) / [vue-style-loader](https://github.com/vuejs/vue-style-loader)
 
 ## Architecture Overview
 
