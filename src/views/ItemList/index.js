@@ -82,16 +82,14 @@ export default class ItemList extends React.PureComponent {
         },
         () => {
           setTimeout(() => {
-            {
-              if (!this._mounted) {
-                return
-              }
-
-              this.setState({
-                displayedPage: to,
-                displayedItems: this.props.activeItems,
-              })
+            if (!this._mounted) {
+              return
             }
+
+            this.setState({
+              displayedPage: to,
+              displayedItems: this.props.activeItems,
+            })
           }, transition ? 500 : 0)
         },
       )

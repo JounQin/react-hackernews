@@ -10,7 +10,7 @@ import serverConfig from '../build/react.server.babel'
 
 const debug = _debug('1stg:server:dev')
 
-export default cb => {
+export default after => {
   let _resolve, clientManifest, bundle, fs
 
   const readyPromise = new Promise(resolve => {
@@ -19,7 +19,7 @@ export default cb => {
 
   const ready = (...args) => {
     _resolve()
-    cb(...args)
+    after(...args)
   }
 
   const clientCompiler = webpack(clientConfig)

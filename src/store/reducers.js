@@ -60,5 +60,3 @@ export const lists = (
       return state
   }
 }
-
-export default { activeType, itemsPerPage, items, users, lists }

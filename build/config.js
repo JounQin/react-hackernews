@@ -13,7 +13,8 @@ export const publicPath = __DEV__ ? `http://${serverHost}:${serverPort}/` : '/'
 export const resolve = (...args) => path.resolve(process.cwd(), ...args)
 
 export const runtimeRequire =
+  // eslint-disable-next-line camelcase
   typeof __non_webpack_require__ === 'undefined'
     ? require
-    : // eslint-disable-next-line no-undef
+    : // eslint-disable-next-line no-undef,camelcase
       __non_webpack_require__

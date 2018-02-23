@@ -3,7 +3,7 @@ import { routerReducer as router, routerMiddleware } from 'react-router-redux'
 import { compose, combineReducers, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
-import reducers from './reducers'
+import * as reducers from './reducers'
 
 export const history = __SERVER__
   ? createMemoryHistory()
