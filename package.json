@@ -120,7 +120,7 @@
     "ssr-webpack-plugin": "^1.1.2",
     "sw-precache-webpack-plugin": "^0.11.4",
     "uglifyjs-webpack-plugin": "^1.2.0",
-    "webpack": "^3.11.0",
+    "webpack": "^4.0.0",
     "webpack-merge": "^4.1.1",
     "webpack-node-externals": "^1.6.0"
   },
