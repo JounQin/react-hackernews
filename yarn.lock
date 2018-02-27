@@ -3456,7 +3456,7 @@ hoek@4.x.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
 
-hoist-non-react-statics@^2.3.0, hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0:
+hoist-non-react-statics@^2.3.0, hoist-non-react-statics@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.0.tgz#d2ca2dfc19c5a91c5a6615ce8e564ef0347e2a40"
 
@@ -6171,15 +6171,15 @@ react-dom@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-hot-loader@4.0.0-beta.19:
-  version "4.0.0-beta.19"
-  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.0.0-beta.19.tgz#5803044c646738d63d11af793a66fa5e62246c5b"
+react-hot-loader@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.0.0.tgz#3452fa9bc0d0ba9dfc5b0ccfa25101ca8dbd2de2"
   dependencies:
     fast-levenshtein "^2.0.6"
     global "^4.3.0"
-    hoist-non-react-statics "^2.3.1"
+    hoist-non-react-statics "^2.5.0"
     prop-types "^15.6.0"
-    react-stand-in "^4.0.0-beta.19"
+    shallowequal "^1.0.2"
 
 react-redux@^5.0.7:
   version "5.0.7"
@@ -6236,7 +6236,7 @@ react-server-renderer@^0.2.3:
     serialize-javascript "^1.4.0"
     source-map "^0.6.1"
 
-react-stand-in@4.0.0-beta.13, react-stand-in@^4.0.0-beta.19:
+react-stand-in@4.0.0-beta.13:
   version "4.0.0-beta.13"
   resolved "https://registry.yarnpkg.com/react-stand-in/-/react-stand-in-4.0.0-beta.13.tgz#70b9dfe15b573a664bd1927a45bb67fb04de0ad7"
   dependencies:
