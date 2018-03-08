@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { AsyncComponentProvider } from 'react-async-component'
 import asyncBootstrapper from 'react-async-bootstrapper'
 import { hydrate } from 'react-dom'
@@ -18,21 +18,15 @@ if (!__DEV__) {
   delete window.ASYNC_COMPONENTS_STATE
 }
 
-const AppContainer = __DEV__
-  ? require('react-hot-loader').AppContainer
-  : Fragment
-
 const render = () => {
   const app = (
-    <AppContainer>
-      <AsyncComponentProvider rehydrateState={rehydrateState}>
-        <Provider store={store}>
-          <ConnectedRouter history={history}>
-            <App />
-          </ConnectedRouter>
-        </Provider>
-      </AsyncComponentProvider>
-    </AppContainer>
+    <AsyncComponentProvider rehydrateState={rehydrateState}>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
+      </Provider>
+    </AsyncComponentProvider>
   )
 
   asyncBootstrapper(app).then(() =>

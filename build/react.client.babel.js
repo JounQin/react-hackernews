@@ -24,24 +24,23 @@ const clientConfig = merge.smart(base, {
   module: {
     rules: [babelLoader()],
   },
+  optimization: {
+    runtimeChunk: {
+      name: 'manifest',
+    },
+    splitChunks: {
+      chunks: 'initial',
+      name: 'vendors',
+      cacheGroups: {
+        test: ({ context, request }) =>
+          /node_modules/.test(context) && !/\.css$/.test(request),
+      },
+    },
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.REACT_ENV': '"client"',
       __SERVER__: false,
-    }),
-    // extract vendor chunks for better caching
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendors',
-      minChunks: ({ context, request }) =>
-        // it's inside node_modules
-        /node_modules/.test(context) &&
-        // and not a CSS file (due to extract-text-webpack-plugin limitation)
-        !/\.css$/.test(request),
-    }),
-    // extract webpack runtime & manifest to avoid vendor chunk hash changing
-    // on every build.
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
     }),
     new SSRClientPlugin({
       filename: '../ssr-client-manifest.json',

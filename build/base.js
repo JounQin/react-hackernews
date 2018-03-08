@@ -1,7 +1,6 @@
 import webpack from 'webpack'
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
-import UglifyjsWebpackPlugin from 'uglifyjs-webpack-plugin'
 
 import { NODE_ENV, __DEV__, resolve } from './config'
 
@@ -27,14 +26,12 @@ const cssLoaders = manualInject =>
       {
         loader: 'postcss-loader',
         options: {
-          minimize,
           souceMap,
         },
       },
       {
         loader: 'sass-loader',
         options: {
-          minimize,
           souceMap,
         },
       },
@@ -65,6 +62,7 @@ export const babelLoader = isServer => ({
 })
 
 export default {
+  mode: NODE_ENV,
   devtool: __DEV__ && 'cheap-module-source-map',
   resolve: {
     alias: {
@@ -104,20 +102,13 @@ export default {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
       __DEV__,
     }),
     new ExtractTextWebpackPlugin({
-      disable: true,
+      disable: __DEV__,
+      allChunks: true,
       filename: '[name].[contenthash].css',
     }),
     new FriendlyErrorsWebpackPlugin(),
-    ...(__DEV__
-      ? [new webpack.NamedModulesPlugin(), new webpack.NamedChunksPlugin()]
-      : [
-          new webpack.NoEmitOnErrorsPlugin(),
-          new webpack.optimize.ModuleConcatenationPlugin(),
-          new UglifyjsWebpackPlugin(),
-        ]),
   ],
 }

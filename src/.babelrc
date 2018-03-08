@@ -9,7 +9,6 @@
     "@babel/stage-0",
     "@babel/react"
   ],
-  "plugins": ["react-hot-loader/babel"],
   "env": {
     "production": {
       "plugins": [

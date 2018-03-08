@@ -1,11 +1,11 @@
 import nodeExternals from 'webpack-node-externals'
-import UglifyjsWebpackPlugin from 'uglifyjs-webpack-plugin'
 
-import { resolve } from './config'
+import { NODE_ENV, resolve } from './config'
 
 import { babelLoader } from './base'
 
 export default {
+  mode: NODE_ENV,
   entry: resolve('server/index.js'),
   output: {
     path: resolve('dist'),
@@ -19,5 +19,4 @@ export default {
   module: {
     rules: [babelLoader(true)],
   },
-  plugins: [new UglifyjsWebpackPlugin()],
 }
