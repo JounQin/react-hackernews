@@ -41,6 +41,7 @@ export default class ItemList extends React.PureComponent {
     loading: PropTypes.bool.isRequired,
     activeItems: PropTypes.array.isRequired,
     match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
     itemsPerPage: PropTypes.number.isRequired,
     lists: PropTypes.object.isRequired,
     type: PropTypes.string.isRequired,
@@ -114,6 +115,10 @@ export default class ItemList extends React.PureComponent {
     })
   }
 
+  isSameLocation(prev, curr) {
+    return prev.pathname === curr.pathname && prev.search === curr.search
+  }
+
   componentDidMount() {
     this._mounted = true
 
@@ -134,7 +139,10 @@ export default class ItemList extends React.PureComponent {
 
     this.unwatchPage = this.props.history.listen(location => {
       const { params: { page: prevPage }, path } = this.props.match
-      if (!p2r(path).exec(location.pathname)) {
+      if (
+        this.isSameLocation(this.props.location, location) ||
+        !p2r(path).exec(location.pathname)
+      ) {
         return
       }
       setTimeout(() =>

@@ -65,6 +65,9 @@ export default {
   devtool: __DEV__ && 'cheap-module-source-map',
   resolve: {
     alias: {
+      react: 'anujs',
+      'react-dom': 'anujs',
+      'prop-types': 'anujs/lib/ReactPropTypes',
       lodash: 'lodash-es',
     },
     extensions: ['.js', '.scss'],
