@@ -7,6 +7,11 @@ import {
 import TYPES from './types'
 import { activeIds } from './selectors'
 
+export const setLoading = loading => ({
+  type: TYPES.SET_LOADING,
+  loading,
+})
+
 export const setActiveType = activeType => ({
   type: TYPES.SET_ACTIVE_TYPE,
   activeType,

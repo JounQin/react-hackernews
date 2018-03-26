@@ -1,5 +1,14 @@
 import TYPES from './types'
 
+export const loading = (state = false, action) => {
+  switch (action.type) {
+    case TYPES.SET_LOADING:
+      return action.loading
+    default:
+      return state
+  }
+}
+
 export const activeType = (state = null, action) => {
   switch (action.type) {
     case TYPES.SET_ACTIVE_TYPE:

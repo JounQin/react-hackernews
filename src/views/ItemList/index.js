@@ -7,7 +7,13 @@ import { Link } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import { watchList } from 'api'
-import { activeItems, setList, ensureActiveItems, fetchListData } from 'store'
+import {
+  activeItems,
+  setLoading,
+  setList,
+  ensureActiveItems,
+  fetchListData,
+} from 'store'
 import { withSsr, shared } from 'utils'
 
 import Item from 'components/Item'
@@ -17,11 +23,13 @@ import styles from './styles'
 
 @connect(
   (state, props) => ({
+    loading: state.loading,
     activeItems: activeItems(state, props.match.params.page),
     itemsPerPage: state.itemsPerPage,
     lists: state.lists,
   }),
   (dispatch, { type, match: { params: { page } } }) => ({
+    setLoading: loading => dispatch(setLoading(loading)),
     setList: (listType, ids) => dispatch(setList(listType, ids)),
     fetchListData: () => dispatch(fetchListData(type, page)),
     ensureActiveItems: () => dispatch(ensureActiveItems(page)),
@@ -30,6 +38,7 @@ import styles from './styles'
 @withSsr(styles, false, ({ props }) => startCase(props.type))
 export default class ItemList extends React.PureComponent {
   static propTypes = {
+    loading: PropTypes.bool.isRequired,
     activeItems: PropTypes.array.isRequired,
     match: PropTypes.object.isRequired,
     itemsPerPage: PropTypes.number.isRequired,
@@ -37,6 +46,7 @@ export default class ItemList extends React.PureComponent {
     type: PropTypes.string.isRequired,
     fetchListData: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
+    setLoading: PropTypes.func.isRequired,
     setList: PropTypes.func.isRequired,
     ensureActiveItems: PropTypes.func.isRequired,
   }
@@ -62,6 +72,8 @@ export default class ItemList extends React.PureComponent {
   }
 
   loadItems(to = this.page, from = -1) {
+    this.props.setLoading(true)
+
     this.props.fetchListData().then(() => {
       if (!this._mounted) {
         return
@@ -87,10 +99,15 @@ export default class ItemList extends React.PureComponent {
               return
             }
 
-            this.setState({
-              displayedPage: to,
-              displayedItems: this.props.activeItems,
-            })
+            this.setState(
+              {
+                displayedPage: to,
+                displayedItems: this.props.activeItems,
+              },
+              () => {
+                this.props.setLoading(false)
+              },
+            )
           }, transition ? 500 : 0)
         },
       )
@@ -141,7 +158,7 @@ export default class ItemList extends React.PureComponent {
       transition,
     } = this.state
 
-    const { type } = this.props
+    const { loading, type } = this.props
 
     return (
       <div className="news-view">
@@ -171,7 +188,7 @@ export default class ItemList extends React.PureComponent {
           }}
         >
           <div className="news-list">
-            {maxPage ? (
+            {maxPage && !loading ? (
               <TransitionGroup component="ul">
                 {displayedItems.map(item => (
                   <CSSTransition
