@@ -54,7 +54,7 @@ export default class UserView extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.asyncBootstrap()
+    this.bootstrap()
   }
 
   render() {
