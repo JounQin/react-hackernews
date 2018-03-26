@@ -7164,9 +7164,9 @@ react-async-bootstrapper@^2.1.0:
   dependencies:
     react-tree-walker "^4.0.2"
 
-react-async-component@^2.0.0-alpha.1:
-  version "2.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/react-async-component/-/react-async-component-2.0.0-alpha.1.tgz#ecaed220f178b24f9cb8a45ceb6d14e9735532f0"
+react-async-component@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-async-component/-/react-async-component-2.0.0.tgz#a56c1278ac588291fce6cd5cf033eb97eb36483c"
 
 react-dom@^16.2.0:
   version "16.2.0"
