@@ -1,42 +1,41 @@
 import webpack from 'webpack'
-import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 import { NODE_ENV, __DEV__, resolve } from './config'
 
 const souceMap = __DEV__
 const minimize = !souceMap
 
-const cssLoaders = manualInject =>
-  ExtractTextWebpackPlugin.extract({
-    fallback: {
-      loader: 'react-style-loader',
-      options: {
-        manualInject,
-      },
+const cssLoaders = manualInject => [
+  manualInject
+    ? {
+        loader: 'react-style-loader',
+        options: {
+          manualInject,
+        },
+      }
+    : MiniCssExtractPlugin.loader,
+  {
+    loader: 'css-loader',
+    options: {
+      minimize,
+      souceMap,
     },
-    use: [
-      {
-        loader: 'css-loader',
-        options: {
-          minimize,
-          souceMap,
-        },
-      },
-      {
-        loader: 'postcss-loader',
-        options: {
-          souceMap,
-        },
-      },
-      {
-        loader: 'sass-loader',
-        options: {
-          souceMap,
-        },
-      },
-    ],
-  })
+  },
+  {
+    loader: 'postcss-loader',
+    options: {
+      souceMap,
+    },
+  },
+  {
+    loader: 'sass-loader',
+    options: {
+      souceMap,
+    },
+  },
+]
 
 export const babelLoader = isServer => ({
   test: /\.js$/,
@@ -89,11 +88,10 @@ export default {
         test: /\.scss$/,
         oneOf: [
           {
-            test: /app.scss/,
+            test: /app.scss$/,
             use: cssLoaders(),
           },
           {
-            test: /./,
             use: cssLoaders(true),
           },
         ],
@@ -104,10 +102,8 @@ export default {
     new webpack.DefinePlugin({
       __DEV__,
     }),
-    new ExtractTextWebpackPlugin({
-      disable: __DEV__,
-      allChunks: true,
-      filename: '[name].[contenthash].css',
+    new MiniCssExtractPlugin({
+      filename: '[name].[chunkhash].css',
     }),
     new FriendlyErrorsWebpackPlugin(),
   ],
