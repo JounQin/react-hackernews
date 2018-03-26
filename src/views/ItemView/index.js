@@ -32,7 +32,7 @@ export default class ItemView extends React.PureComponent {
     loading: false,
   }
 
-  asyncBootstrap() {
+  bootstrap() {
     const { id } = this.props.match.params
     if (this.props.items[id]) {
       return true

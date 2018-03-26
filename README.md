@@ -40,13 +40,9 @@ HackerNews clone built with React, ReactRouter &amp; Redux, with full page serve
 
 [vue-hackernews-2.0](https://github.com/vuejs/vue-hackernews-2.0)
 
-[vue-server-renderer](https://ssr.vuejs.org)
+[react-server-renderer](https://github.com/JounQin/react-server-renderer) / [vue-server-renderer](https://ssr.vuejs.org)
 
-[react-async-component](https://github.com/ctrlplusb/react-async-component)
-
-[react-async-bootstrapper](https://github.com/ctrlplusb/react-async-bootstrapper)
-
-[react-server-renderer](https://github.com/JounQin/react-server-renderer)
+[react-async-component](https://github.com/ctrlplusb/react-async-component) / [react-async-bootstrapper](https://github.com/ctrlplusb/react-async-bootstrapper)
 
 [react-style-loader](https://github.com/JounQin/react-style-loader) / [vue-style-loader](https://github.com/vuejs/vue-style-loader)
 

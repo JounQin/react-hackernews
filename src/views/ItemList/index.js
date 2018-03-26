@@ -11,6 +11,7 @@ import { activeItems, setList, ensureActiveItems, fetchListData } from 'store'
 import { withSsr, shared } from 'utils'
 
 import Item from 'components/Item'
+import Spinner from 'components/Spinner'
 
 import styles from './styles'
 
@@ -170,17 +171,23 @@ export default class ItemList extends React.PureComponent {
           }}
         >
           <div className="news-list">
-            <TransitionGroup component="ul">
-              {displayedItems.map(item => (
-                <CSSTransition
-                  key={item.id}
-                  classNames={itemTransition}
-                  timeout={itemTransition ? 500 : 0}
-                >
-                  <Item item={item} />
-                </CSSTransition>
-              ))}
-            </TransitionGroup>
+            {maxPage ? (
+              <TransitionGroup component="ul">
+                {displayedItems.map(item => (
+                  <CSSTransition
+                    key={item.id}
+                    classNames={itemTransition}
+                    timeout={itemTransition ? 500 : 0}
+                  >
+                    <Item item={item} />
+                  </CSSTransition>
+                ))}
+              </TransitionGroup>
+            ) : (
+              <div className="loading">
+                <Spinner show={true} />
+              </div>
+            )}
           </div>
         </CSSTransition>
       </div>

@@ -45,7 +45,7 @@ export default class UserView extends React.PureComponent {
     return users[match.params.id]
   }
 
-  asyncBootstrap() {
+  bootstrap() {
     if (this.user != null) {
       return true
     }

@@ -23,7 +23,7 @@ export default type => {
       fetchListData: PropTypes.func.isRequired,
     }
 
-    asyncBootstrap() {
+    bootstrap() {
       if (this.props.activeItems.length) {
         return true
       }
