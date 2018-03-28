@@ -105,7 +105,7 @@
     "husky": "^0.14.3",
     "koa-webpack": "^3.0.2",
     "lint-staged": "^7.0.0",
-    "mini-css-extract-plugin": "^0.2.0",
+    "mini-css-extract-plugin": "^0.3.0",
     "node-sass": "^4.8.3",
     "npm-run-all": "^4.1.2",
     "postcss-loader": "^2.1.3",
