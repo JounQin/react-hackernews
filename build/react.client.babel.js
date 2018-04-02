@@ -3,7 +3,7 @@ import merge from 'webpack-merge'
 import { SSRClientPlugin } from 'ssr-webpack-plugin'
 import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin'
 
-import { __DEV__, publicPath, resolve } from './config'
+import { __DEV__, publicPath, hasType, resolve } from './config'
 
 import base, { babelLoader } from './base'
 
@@ -19,7 +19,7 @@ const clientConfig = merge.smart(base, {
   output: {
     publicPath,
     path: resolve('dist/static'),
-    filename: `[name].[${__DEV__ ? 'hash' : 'chunkhash'}].js`,
+    filename: `[name].[${hasType}].js`,
   },
   module: {
     rules: [babelLoader()],

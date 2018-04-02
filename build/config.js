@@ -4,6 +4,8 @@ export const NODE_ENV = process.env.NODE_ENV || 'development'
 
 export const __DEV__ = NODE_ENV === 'development'
 
+export const hasType = __DEV__ ? 'hash' : 'contenthash'
+
 export const serverHost = 'localhost'
 
 export const serverPort = process.env.PORT || 4000

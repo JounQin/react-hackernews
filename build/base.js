@@ -2,7 +2,7 @@ import webpack from 'webpack'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-import { NODE_ENV, __DEV__, resolve } from './config'
+import { NODE_ENV, __DEV__, hasType, resolve } from './config'
 
 const souceMap = __DEV__
 const minimize = !souceMap
@@ -106,7 +106,7 @@ export default {
       __DEV__,
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash].css',
+      filename: `[name].[${hasType}].css`,
     }),
     new FriendlyErrorsWebpackPlugin(),
   ],
