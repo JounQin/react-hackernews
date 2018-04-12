@@ -8078,11 +8078,11 @@ sshpk@^1.7.0:
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
 
-ssr-webpack-plugin@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/ssr-webpack-plugin/-/ssr-webpack-plugin-1.1.2.tgz#de946296f83994082b0e3d11482591e1d6314cd9"
+ssr-webpack-plugin@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/ssr-webpack-plugin/-/ssr-webpack-plugin-2.0.1.tgz#6d3d7a32aaf36e579f44702a51a2a1072e3e0966"
   dependencies:
-    chalk "^2.3.0"
+    chalk "^2.3.2"
     hash-sum "^1.0.2"
     lodash.uniq "^4.5.0"
 
