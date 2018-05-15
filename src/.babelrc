@@ -6,7 +6,12 @@
         "modules": false
       }
     ],
-    "@babel/stage-0",
+    [
+      "@babel/stage-0",
+      {
+        "decoratorsLegacy": true
+      }
+    ],
     "@babel/react"
   ],
   "env": {
