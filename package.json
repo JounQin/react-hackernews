@@ -111,7 +111,7 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-minifier": "^3.5.15",
     "husky": "^0.14.3",
-    "koa-webpack": "^4.0.0",
+    "koa-webpack": "^5.0.0",
     "lint-staged": "^7.1.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
