@@ -108,7 +108,7 @@ const createRenderer = (bundle, options) =>
   })
 
 if (__DEV__) {
-  const { readyPromise, webpackMiddleware } = require('./dev').default(
+  const { readyPromise, webpackMiddlewarePromise } = require('./dev').default(
     ({ bundle, clientManifest }) => {
       renderer = createRenderer(bundle, {
         clientManifest,
@@ -116,7 +116,7 @@ if (__DEV__) {
     },
   )
   ready = readyPromise
-  middlewares.push(webpackMiddleware)
+  webpackMiddlewarePromise.then(webpackMiddleware => app.use(webpackMiddleware))
 } else {
   renderer = createRenderer(
     runtimeRequire(resolve('dist/ssr-server-bundle.json')),

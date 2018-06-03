@@ -16,7 +16,12 @@ const USER_NOT_FOUND = 'User Not Found'
   }),
 )
 @withSsr(styles, false, self => {
-  const { users, match: { params: { id } } } = self.props
+  const {
+    users,
+    match: {
+      params: { id },
+    },
+  } = self.props
   const user = users[id]
 
   if (user) {

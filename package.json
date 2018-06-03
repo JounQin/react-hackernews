@@ -42,12 +42,22 @@
       "__DEV__": false,
       "__SERVER__": false
     },
-    "extends": ["1stg/react"]
+    "extends": [
+      "1stg/react"
+    ]
   },
-  "eslintIgnore": ["dist"],
+  "eslintIgnore": [
+    "dist"
+  ],
   "lint-staged": {
-    "*.{json,md}": ["prettier --write", "git add"],
-    "*.js": ["eslint --max-warnings=10 --fix", "git add"]
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --max-warnings=10 --fix",
+      "git add"
+    ]
   },
   "prettier": {
     "semi": false,
@@ -63,14 +73,14 @@
     ]
   },
   "dependencies": {
-    "anujs": "^1.3.4",
-    "cross-env": "^5.1.5",
+    "anujs": "^1.4.0",
+    "cross-env": "^5.1.6",
     "debug": "^3.1.0",
-    "firebase": "^5.0.2",
+    "firebase": "^5.0.4",
     "history": "^4.7.2",
     "koa": "^2.5.1",
     "koa-cash": "^2.2.0",
-    "koa-compose": "^4.0.0",
+    "koa-compose": "^4.1.0",
     "koa-compress": "^3.0.0",
     "koa-convert": "^1.2.0",
     "koa-logger": "^3.2.0",
@@ -79,10 +89,10 @@
     "lodash-es": "^4.17.10",
     "lru-cache": "^4.1.3",
     "path-to-regexp": "^2.2.1",
-    "react": "^16.3.2",
+    "react": "^16.4.0",
     "react-async-bootstrapper": "^2.1.0",
     "react-async-component": "^2.0.0",
-    "react-dom": "^16.3.2",
+    "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-config": "JounQin/modules#react-router-config",
@@ -91,43 +101,43 @@
     "react-server-renderer": "^0.2.3",
     "react-transition-group": "^2.3.1",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.2.0",
+    "redux-thunk": "^2.3.0",
     "serialize-javascript": "^1.5.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.47",
-    "@babel/node": "^7.0.0-beta.47",
-    "@babel/preset-env": "^7.0.0-beta.47",
-    "@babel/preset-react": "^7.0.0-beta.47",
-    "@babel/preset-stage-0": "^7.0.0-beta.47",
-    "@babel/register": "^7.0.0-beta.47",
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/node": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/preset-react": "^7.0.0-beta.49",
+    "@babel/preset-stage-0": "^7.0.0-beta.49",
+    "@babel/register": "^7.0.0-beta.49",
     "apply-loader": "^2.0.0",
     "babel-eslint": "^8.2.3",
-    "babel-loader": "^8.0.0-beta.2",
+    "babel-loader": "^8.0.0-beta.3",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-1stg": "^2.1.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
-    "html-minifier": "^3.5.15",
+    "html-minifier": "^3.5.16",
     "husky": "^0.14.3",
-    "koa-webpack": "^4.0.0",
-    "lint-staged": "^7.1.0",
+    "koa-webpack": "^5.0.1",
+    "lint-staged": "^7.1.3",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "npm-run-all": "^4.1.3",
     "postcss-loader": "^2.1.5",
-    "prettier": "^1.12.1",
+    "prettier": "^1.13.4",
     "prop-types": "^15.6.1",
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
     "react-style-loader": "^2.3.0",
     "rimraf": "^2.6.2",
-    "sass-loader": "^7.0.0",
+    "sass-loader": "^7.0.2",
     "ssr-webpack-plugin": "^2.0.1",
     "sw-precache-webpack-plugin": "^0.11.5",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.3",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^3.0.1",
     "webpack-merge": "^4.1.2",
     "webpack-node-externals": "^1.7.2"
   }

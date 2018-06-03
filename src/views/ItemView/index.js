@@ -18,7 +18,12 @@ import styles from './styles'
   }),
 )
 @withSsr(styles, false, ({ props }) => {
-  const { items, match: { params: { id } } } = props
+  const {
+    items,
+    match: {
+      params: { id },
+    },
+  } = props
   return items[id] && items[id].title
 })
 export default class ItemView extends React.PureComponent {

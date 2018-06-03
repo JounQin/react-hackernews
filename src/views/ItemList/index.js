@@ -28,7 +28,15 @@ import styles from './styles'
     itemsPerPage: state.itemsPerPage,
     lists: state.lists,
   }),
-  (dispatch, { type, match: { params: { page } } }) => ({
+  (
+    dispatch,
+    {
+      type,
+      match: {
+        params: { page },
+      },
+    },
+  ) => ({
     setLoading: loading => dispatch(setLoading(loading)),
     setList: (listType, ids) => dispatch(setList(listType, ids)),
     fetchListData: () => dispatch(fetchListData(type, page)),
@@ -138,7 +146,10 @@ export default class ItemList extends React.PureComponent {
     })
 
     this.unwatchPage = this.props.history.listen(location => {
-      const { params: { page: prevPage }, path } = this.props.match
+      const {
+        params: { page: prevPage },
+        path,
+      } = this.props.match
       if (
         this.isSameLocation(this.props.location, location) ||
         !p2r(path).exec(location.pathname)

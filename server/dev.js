@@ -24,9 +24,9 @@ export default after => {
 
   const clientCompiler = webpack(clientConfig)
 
-  const webpackMiddleware = koaWebpack({
+  const webpackMiddlewarePromise = koaWebpack({
     compiler: clientCompiler,
-    dev: {
+    devMiddleware: {
       stats: {
         colors: true,
       },
@@ -37,16 +37,20 @@ export default after => {
     stats = stats.toJson()
     stats.errors.forEach(debug)
     stats.warnings.forEach(debug)
+
     if (stats.errors.length) return
 
-    fs = webpackMiddleware.dev.fileSystem
-    clientManifest = JSON.parse(
-      fs.readFileSync(resolve('dist/ssr-client-manifest.json')),
-    )
+    webpackMiddlewarePromise.then(webpackMiddleware => {
+      fs = webpackMiddleware.devMiddleware.fileSystem
 
-    if (bundle) {
-      ready({ bundle, clientManifest, fs })
-    }
+      clientManifest = JSON.parse(
+        fs.readFileSync(resolve('dist/ssr-client-manifest.json')),
+      )
+
+      if (bundle) {
+        ready({ bundle, clientManifest, fs })
+      }
+    })
   })
 
   const mfs = new MFS()
@@ -67,5 +71,5 @@ export default after => {
     }
   })
 
-  return { readyPromise, webpackMiddleware }
+  return { readyPromise, webpackMiddlewarePromise }
 }
