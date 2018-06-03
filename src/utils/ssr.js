@@ -19,6 +19,15 @@ export const withSsr = (styles, router = true, title) => {
         staticContext: PropTypes.object,
       }
 
+      constructor(props, context) {
+        super(props, context)
+        if (styles.__inject__) {
+          styles.__inject__(this.props.staticContext)
+        }
+
+        this.setTitle()
+      }
+
       setTitle() {
         const t = typeof title === 'function' ? title.call(this, this) : title
 
@@ -36,14 +45,6 @@ export const withSsr = (styles, router = true, title) => {
             document.title = `React Hackernews | ${title}`
           }
         })
-      }
-
-      componentWillMount() {
-        if (styles.__inject__) {
-          styles.__inject__(this.props.staticContext)
-        }
-
-        this.setTitle()
       }
 
       render() {

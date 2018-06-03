@@ -58,11 +58,13 @@ const routes = [
         staticContext: PropTypes.object,
       }
 
-      componentWillMount() {
+      constructor(props, context) {
+        super(props, context)
         if (this.props.staticContext) {
           this.props.staticContext.code = 404
         }
       }
+
       render() {
         return 'Custom 404 Page, will you implement it?'
       }
