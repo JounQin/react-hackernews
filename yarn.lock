@@ -4441,9 +4441,9 @@ koa-static-cache@^5.1.2:
     mime-types "^2.1.8"
     mz "^2.7.0"
 
-koa-webpack@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/koa-webpack/-/koa-webpack-5.0.1.tgz#9689b7e8e9051c808158e67923b986da79542a25"
+koa-webpack@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/koa-webpack/-/koa-webpack-5.0.2.tgz#9deebec50a1b8beffb1f5ac11fa962f4e583f71b"
   dependencies:
     "@webpack-contrib/schema-utils" "^1.0.0-beta.0"
     app-root-path "^2.0.1"
