@@ -59,6 +59,9 @@
       "git add"
     ]
   },
+  "now": {
+    "alias": "react-hn"
+  },
   "prettier": {
     "semi": false,
     "singleQuote": true,

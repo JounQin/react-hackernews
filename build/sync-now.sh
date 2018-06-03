@@ -15,4 +15,4 @@ echo 'prepared successfully'
 
 cd sync
 now --public
-now alias --public
+now alias
