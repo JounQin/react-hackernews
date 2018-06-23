@@ -91,7 +91,7 @@ export default class ItemView extends React.PureComponent {
     return item ? (
       <div className="item-view">
         <div className="item-view-header">
-          <a href={item.url} target="_blank">
+          <a href={item.url} target="_blank" rel="noopener noreferrer">
             <h1>{item.title}</h1>
           </a>
           {item.url ? <span className="host">({host(item.url)})</span> : null}

@@ -12,7 +12,7 @@ const Item = ({ item }) => (
     <span className="title">
       {item.url ? (
         <>
-          <a href={item.url} target="_blank" rel="noopener">
+          <a href={item.url} target="_blank" rel="noopener noreferrer">
             {item.title}
           </a>
           <span className="host"> ({host(item.url)})</span>
