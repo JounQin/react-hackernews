@@ -5,7 +5,6 @@ import Koa from 'koa'
 import cash from 'koa-cash'
 import compose from 'koa-compose'
 import compress from 'koa-compress'
-import convert from 'koa-convert'
 import logger from 'koa-logger'
 import mount from 'koa-mount'
 import serve from 'koa-static-cache'
@@ -138,12 +137,10 @@ if (__DEV__) {
       },
       files,
     ),
-    convert(
-      cash({
-        get: key => cache.get(key),
-        set: (key, value) => cache.set(key, value),
-      }),
-    ),
+    cash({
+      get: key => cache.get(key),
+      set: (key, value) => cache.set(key, value),
+    }),
   )
 
   files['/service-worker.js'].maxAge = 0
