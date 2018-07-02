@@ -98,7 +98,7 @@ export default class App extends React.PureComponent {
         <header className="header">
           <nav className="inner">
             <NavLink to="/" exact>
-              <img className="logo" src="/public/logo-48.png" alt="logo" />
+              <img className="logo" src="/public/logo.svg" alt="React Logo" />
             </NavLink>
             {['top', 'new', 'show', 'ask', 'job'].map(route => (
               <NavLink key={route} to={`/${route}`}>
