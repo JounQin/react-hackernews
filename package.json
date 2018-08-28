@@ -115,7 +115,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
     "css-loader": "^0.28.11",
     "eslint": "^5.0.1",
-    "eslint-config-1stg": "^2.1.0",
+    "eslint-config-1stg": "^3.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-minifier": "^3.5.17",
     "husky": "^0.14.3",
