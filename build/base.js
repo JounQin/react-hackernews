@@ -4,8 +4,9 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 import { NODE_ENV, __DEV__, hasType, resolve } from './config'
 
-const sourceMap = __DEV__
-const minimize = !sourceMap
+const options = {
+  sourceMap: __DEV__,
+}
 
 const cssLoaders = manualInject => [
   manualInject
@@ -18,22 +19,15 @@ const cssLoaders = manualInject => [
     : MiniCssExtractPlugin.loader,
   {
     loader: 'css-loader',
-    options: {
-      minimize,
-      sourceMap,
-    },
+    options,
   },
   {
     loader: 'postcss-loader',
-    options: {
-      sourceMap,
-    },
+    options,
   },
   {
     loader: 'sass-loader',
-    options: {
-      sourceMap,
-    },
+    options,
   },
 ]
 

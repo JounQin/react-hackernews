@@ -12,9 +12,6 @@ export default {
     filename: 'server.js',
   },
   target: 'node',
-  resolve: {
-    modules: [resolve('src'), 'node_modules'],
-  },
   externals: nodeExternals(),
   module: {
     rules: [babelLoader(true)],
