@@ -1,24 +1,33 @@
 {
-  "presets": [
+  presets: [
     [
-      "@babel/env",
+      '@babel/env',
       {
-        "modules": false
-      }
+        modules: false,
+      },
     ],
-    [
-      "@babel/stage-0",
-      {
-        "decoratorsLegacy": true
-      }
-    ],
-    "@babel/react"
+    '@babel/react',
   ],
-  "env": {
-    "production": {
-      "plugins": [
-        ["transform-react-remove-prop-types", { "removeImport": true }]
-      ]
-    }
-  }
+  plugins: [
+    [
+      '@babel/proposal-decorators',
+      {
+        legacy: true,
+      },
+    ],
+    '@babel/proposal-class-properties',
+    '@babel/syntax-dynamic-import',
+  ],
+  env: {
+    production: {
+      plugins: [
+        [
+          'transform-react-remove-prop-types',
+          {
+            removeImport: true,
+          },
+        ],
+      ],
+    },
+  },
 }

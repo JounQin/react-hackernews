@@ -7,15 +7,15 @@ import { withSsr, timeAgo } from 'utils'
 
 import styles from './styles'
 
-const Comment = withSsr(styles)(
-  connect(({ items }) => ({ comments: items }))(
+const Comment = connect(({ items }) => ({ comments: items }))(
+  withSsr(styles)(
     class extends React.PureComponent {
       static propTypes = {
         comments: PropTypes.object.isRequired,
         id: PropTypes.number.isRequired,
       }
 
-      displayName = 'Comment'
+      static displayName = 'Comment'
 
       state = {
         open: true,
@@ -58,7 +58,9 @@ const Comment = withSsr(styles)(
                   className="comment-children"
                   style={{ display: open ? 'block' : 'none' }}
                 >
-                  {comment.kids.map(id => <Comment key={id} id={id} />)}
+                  {comment.kids.map(id => (
+                    <Comment key={id} id={id} />
+                  ))}
                 </ul>
               </>
             ) : null}

@@ -29,11 +29,12 @@ const clientConfig = merge.smart(base, {
       name: 'manifest',
     },
     splitChunks: {
-      chunks: 'initial',
-      name: 'vendors',
       cacheGroups: {
-        test: ({ context, request }) =>
-          /node_modules/.test(context) && !/\.css$/.test(request),
+        vendors: {
+          chunks: 'initial',
+          name: 'vendors',
+          test: /node_modules/,
+        },
       },
     },
   },
@@ -50,28 +51,15 @@ const clientConfig = merge.smart(base, {
 
 if (!__DEV__) {
   clientConfig.plugins.push(
-    // auto generate service worker
     new SWPrecacheWebpackPlugin({
       cacheId: 'react-hn',
       filename: 'service-worker.js',
       minify: true,
       dontCacheBustUrlsMatching: /./,
-      staticFileGlobsIgnorePatterns: [/\.map$/, /\.json$/],
+      staticFileGlobsIgnorePatterns: [/index\.html$/, /\.map$/, /\.json$/],
       runtimeCaching: [
         {
-          urlPattern: '/',
-          handler: 'networkFirst',
-        },
-        {
-          urlPattern: /\/(top|new|show|ask|jobs)/,
-          handler: 'networkFirst',
-        },
-        {
-          urlPattern: '/item/:id',
-          handler: 'networkFirst',
-        },
-        {
-          urlPattern: '/user/:id',
+          urlPattern: /^https?:\/\//,
           handler: 'networkFirst',
         },
       ],

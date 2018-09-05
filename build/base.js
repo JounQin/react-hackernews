@@ -4,8 +4,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 import { NODE_ENV, __DEV__, hasType, resolve } from './config'
 
-const souceMap = __DEV__
-const minimize = !souceMap
+const sourceMap = __DEV__
+const minimize = !sourceMap
 
 const cssLoaders = manualInject => [
   manualInject
@@ -20,19 +20,19 @@ const cssLoaders = manualInject => [
     loader: 'css-loader',
     options: {
       minimize,
-      souceMap,
+      sourceMap,
     },
   },
   {
     loader: 'postcss-loader',
     options: {
-      souceMap,
+      sourceMap,
     },
   },
   {
     loader: 'sass-loader',
     options: {
-      souceMap,
+      sourceMap,
     },
   },
 ]
@@ -62,7 +62,6 @@ export const babelLoader = isServer => ({
 
 export default {
   mode: NODE_ENV,
-  devtool: __DEV__ && 'cheap-module-source-map',
   resolve: {
     alias: {
       lodash$: 'lodash-es',
@@ -74,15 +73,10 @@ export default {
     rules: [
       {
         test: /\.pug$/,
-        use: [
-          'apply-loader',
-          {
-            loader: 'pug-loader',
-            options: {
-              pretty: __DEV__,
-            },
-          },
-        ],
+        loader: 'pug-plain-loader',
+        options: {
+          pretty: __DEV__,
+        },
       },
       {
         test: /\.scss$/,

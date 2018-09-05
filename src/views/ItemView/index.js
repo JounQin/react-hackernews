@@ -108,7 +108,9 @@ export default class ItemView extends React.PureComponent {
           </p>
           {loading || !item.kids ? null : (
             <ul className="comment-children">
-              {item.kids.map(id => <Comment key={id} id={id} />)}
+              {item.kids.map(id => (
+                <Comment key={id} id={id} />
+              ))}
             </ul>
           )}
         </div>
