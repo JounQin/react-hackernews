@@ -10,7 +10,7 @@ HackerNews clone built with React, ReactRouter &amp; Redux, with full page serve
 
 <p align="center">
   <a href="https://react-hn.now.sh" target="_blank" rel="noopener noreferrer">
-    <img width="720" alt="react-hackernews" src="https://user-images.githubusercontent.com/8336744/34520639-7bc3334e-f0c4-11e7-94c6-e6ef3b007e7f.png">
+    <img width="720" alt="react-hackernews" src="https://user-images.githubusercontent.com/8336744/45299799-387bba80-b53f-11e8-8ba1-d2a5b1d9f201.png">
     <br>
     Live Demo
   </a>
@@ -20,21 +20,21 @@ HackerNews clone built with React, ReactRouter &amp; Redux, with full page serve
 
 > Note: in practice, it is unnecessary to code-split for an app of this size (where each async chunk is only a few kilobytes), nor is it optimal to extract an extra CSS file (which is only 1kb) -- they are used simply because this is a demo app showcasing all the supported features. In real apps, you should always measure and optimize based on your actual app constraints.
 
-* Server Side Rendering
-  * react + react-router + redux working together
-  * Server-side data pre-fetching
-  * Client-side state & DOM hydration
-  * Automatically inlines CSS used by rendered components only
-  * Preload / prefetch resource hints
-  * Route-level code splitting
-  * custom dynamic title for SEO
-* Progressive Web App
-  * App manifest
-  * Service worker
-  * 100/100 Lighthouse score
-* Experience
-  * Hot-reload in development
-  * CSS extraction for production
+- Server Side Rendering
+  - react + react-router + redux working together
+  - Server-side data pre-fetching
+  - Client-side state & DOM hydration
+  - Automatically inlines CSS used by rendered components only
+  - Preload / prefetch resource hints
+  - Route-level code splitting
+  - custom dynamic title for SEO
+- Progressive Web App
+  - App manifest
+  - Service worker
+  - 100/100 Lighthouse score
+- Experience
+  - Hot-reload in development
+  - CSS extraction for production
 
 ## Inspired by
 
