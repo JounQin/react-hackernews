@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "cross-env": "^5.2.0",
-    "debug": "^3.1.0",
+    "debug": "^4.0.1",
     "firebase": "^5.4.2",
     "history": "^4.7.2",
     "koa": "^2.5.2",
