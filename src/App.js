@@ -96,15 +96,17 @@ export default class App extends React.PureComponent {
     return (
       <>
         <header className="header">
-          <nav className="inner">
+          <div className="header-content">
             <NavLink to="/" exact>
               <img className="logo" src="/public/logo.svg" alt="React Logo" />
             </NavLink>
-            {['top', 'new', 'show', 'ask', 'job'].map(route => (
-              <NavLink key={route} to={`/${route}`}>
-                {startCase(route)}
-              </NavLink>
-            ))}
+            <nav className="inner">
+              {['top', 'new', 'show', 'ask', 'job'].map(route => (
+                <NavLink key={route} to={`/${route}`}>
+                  {startCase(route)}
+                </NavLink>
+              ))}
+            </nav>
             <a
               className="github"
               href="https://github.com/JounQin/react-hackernews"
@@ -112,8 +114,9 @@ export default class App extends React.PureComponent {
               rel="noopener noreferrer"
             >
               Built with React.js
+              <img src="/public/external.svg" />
             </a>
-          </nav>
+          </div>
         </header>
         <TransitionGroup component={Fragment}>
           <Transition
@@ -124,9 +127,7 @@ export default class App extends React.PureComponent {
           >
             {status => (
               <div className="view" style={transitionStyles[status]}>
-                {renderRoutes(routes, null, {
-                  location,
-                })}
+                {renderRoutes(routes, null, { location })}
               </div>
             )}
           </Transition>
