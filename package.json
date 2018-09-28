@@ -92,7 +92,7 @@
     "react-router-config": "JounQin/modules#react-router-config",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^5.0.0-alpha.9",
-    "react-server-renderer": "^0.2.3",
+    "react-server-renderer": "^0.3.0",
     "react-transition-group": "^2.4.0",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
