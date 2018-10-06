@@ -1,5 +1,5 @@
 import { createBrowserHistory, createMemoryHistory } from 'history'
-import { routerReducer as router, routerMiddleware } from 'react-router-redux'
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 import { compose, combineReducers, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
@@ -15,10 +15,7 @@ const composeEnhancers =
 
 export default initialState =>
   createStore(
-    combineReducers({
-      ...reducers,
-      router,
-    }),
+    connectRouter(history)(combineReducers(reducers)),
     initialState,
     composeEnhancers(applyMiddleware(routerMiddleware(history), thunk)),
   )
