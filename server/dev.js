@@ -44,7 +44,7 @@ export default after => {
       fs = webpackMiddleware.devMiddleware.fileSystem
 
       clientManifest = JSON.parse(
-        fs.readFileSync(resolve('dist/ssr-client-manifest.json')),
+        fs.readFileSync(resolve('dist/react-ssr-client-manifest.json')),
       )
 
       if (bundle) {
@@ -63,7 +63,7 @@ export default after => {
     if (stats.errors.length) return
 
     bundle = JSON.parse(
-      mfs.readFileSync(resolve('dist/ssr-server-bundle.json')),
+      mfs.readFileSync(resolve('dist/react-ssr-server-bundle.json')),
     )
 
     if (clientManifest) {

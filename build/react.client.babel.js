@@ -1,6 +1,6 @@
 import webpack from 'webpack'
 import merge from 'webpack-merge'
-import { SSRClientPlugin } from 'ssr-webpack-plugin'
+import { ReactSSRClientPlugin } from 'react-server-renderer/client-plugin'
 import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin'
 
 import { __DEV__, publicPath, hasType, resolve } from './config'
@@ -43,8 +43,8 @@ const clientConfig = merge.smart(base, {
       'process.env.REACT_ENV': '"client"',
       __SERVER__: false,
     }),
-    new SSRClientPlugin({
-      filename: '../ssr-client-manifest.json',
+    new ReactSSRClientPlugin({
+      filename: '../react-ssr-client-manifest.json',
     }),
   ],
 })
