@@ -93,7 +93,7 @@
     "react-router": "^4.4.0-beta.1",
     "react-router-config": "^4.4.0-beta.1",
     "react-router-dom": "^4.4.0-beta.1",
-    "react-server-renderer": "^0.3.0",
+    "react-server-renderer": "^1.0.0",
     "react-transition-group": "^2.5.0",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
