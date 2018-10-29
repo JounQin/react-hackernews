@@ -120,7 +120,7 @@
     "html-minifier": "^3.5.20",
     "husky": "^1.1.2",
     "koa-webpack": "^5.1.0",
-    "lint-staged": "^7.3.0",
+    "lint-staged": "^8.0.0",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.9.4",
     "npm-run-all": "^4.1.3",
