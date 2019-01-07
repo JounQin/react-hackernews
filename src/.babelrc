@@ -15,7 +15,12 @@
         "legacy": true
       }
     ],
-    "@babel/proposal-class-properties",
+    [
+      "@babel/proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
     "@babel/syntax-dynamic-import"
   ],
   "env": {

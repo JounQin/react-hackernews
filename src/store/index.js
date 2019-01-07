@@ -15,7 +15,10 @@ const composeEnhancers =
 
 export default initialState =>
   createStore(
-    connectRouter(history)(combineReducers(reducers)),
+    combineReducers({
+      router: connectRouter(history),
+      ...reducers,
+    }),
     initialState,
     composeEnhancers(applyMiddleware(routerMiddleware(history), thunk)),
   )

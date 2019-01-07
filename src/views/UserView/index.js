@@ -11,8 +11,8 @@ const USER_NOT_FOUND = 'User Not Found'
 
 @connect(
   ({ users }) => ({ users }),
-  (dispath, props) => ({
-    fetchUser: () => dispath(fetchUser(props.match.params.id)),
+  (dispatch, props) => ({
+    fetchUser: () => dispatch(fetchUser(props.match.params.id)),
   }),
 )
 @withSsr(styles, false, self => {

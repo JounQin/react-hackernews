@@ -12,9 +12,9 @@ export default type => {
     (state, props) => ({
       activeItems: activeItems(state, props.match.params.page),
     }),
-    (dispath, props) => ({
+    (dispatch, props) => ({
       fetchListData: () =>
-        dispath(fetchListData(type, props.match.params.page)),
+        dispatch(fetchListData(type, props.match.params.page)),
     }),
   )
   class ListView extends React.PureComponent {

@@ -33,7 +33,7 @@ let ready, renderer
 
 const MAX_AGE = 1000 * 3600 * 24 * 365 // one year
 
-const cache = LRU(1000)
+const cache = new LRU(1000)
 
 const middlewares = [
   logger(),
