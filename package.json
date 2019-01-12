@@ -70,7 +70,7 @@
     "trailingComma": "all"
   },
   "dependencies": {
-    "connected-react-router": "^5.0.1",
+    "connected-react-router": "^6.2.0",
     "cross-env": "^5.2.0",
     "debug": "^4.1.1",
     "firebase": "^5.7.2",
