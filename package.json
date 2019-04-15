@@ -94,7 +94,7 @@
     "react-router-config": "^4.4.0-beta.6",
     "react-router-dom": "^4.3.1",
     "react-server-renderer": "^1.1.1",
-    "react-transition-group": "^2.7.1",
+    "react-transition-group": "^3.0.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "serialize-javascript": "^1.6.1"
