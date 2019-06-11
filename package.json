@@ -112,7 +112,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.23",
-    "css-loader": "^2.1.0",
+    "css-loader": "^3.0.0",
     "cssnano": "^4.1.8",
     "eslint": "^5.12.0",
     "eslint-config-1stg": "^3.1.0",
