@@ -1,4 +1,5 @@
 // this is aliased in webpack config based on server/client build
+// eslint-disable-next-line import/no-unresolved
 import { createAPI } from 'create-api'
 
 const logRequests = !!process.env.DEBUG_API

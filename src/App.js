@@ -1,22 +1,24 @@
 import { startCase } from 'lodash'
 import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
-import { asyncComponent } from 'react-async-component'
 import { Redirect } from 'react-router'
 import { renderRoutes } from 'react-router-config'
 import { withRouter, NavLink } from 'react-router-dom'
 import { Transition, TransitionGroup } from 'react-transition-group'
-
-import { shared } from 'utils'
+import Loadable from 'react-loadable'
 
 import 'styles/app'
 
-const resolver = resolve => asyncComponent({ resolve })
+const resolver = loader =>
+  Loadable({
+    loader,
+    loading: () => null,
+  })
 
 const createListView = id =>
   resolver(() => import('views/CreateListView').then(m => m.default(id)))
 
-const routes = [
+export const routes = [
   {
     path: '/',
     exact: true,
@@ -85,10 +87,6 @@ const transitionStyles = {
 export default class App extends React.PureComponent {
   static propTypes = {
     location: PropTypes.object.isRequired,
-  }
-
-  componentDidMount() {
-    shared.appMounted = true
   }
 
   render() {

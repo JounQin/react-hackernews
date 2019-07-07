@@ -26,10 +26,7 @@
       "module-resolver",
       {
         "extensions": [".js", ".jsx", ".scss"],
-        "root": ["./src"],
-        "alias": {
-          "create-api": "./src/api/create-api-client"
-        }
+        "root": ["./src"]
       }
     ]
   ],

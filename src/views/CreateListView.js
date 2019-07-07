@@ -23,11 +23,8 @@ export default type => {
       fetchListData: PropTypes.func.isRequired,
     }
 
-    bootstrap() {
-      if (this.props.activeItems.length) {
-        return true
-      }
-      return this.props.fetchListData().then(() => true)
+    static preload({ store, match }) {
+      return store.dispatch(fetchListData(type, match.params.page))
     }
 
     render() {

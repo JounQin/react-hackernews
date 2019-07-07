@@ -50,6 +50,7 @@ export const babelLoader = isServer => ({
           },
         ],
       ],
+      // plugins: ['dynamic-import-node'],
     }),
   },
 })

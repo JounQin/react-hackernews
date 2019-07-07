@@ -1,8 +1,7 @@
 import React from 'react'
-import { AsyncComponentProvider } from 'react-async-component'
-import asyncBootstrapper from 'react-async-bootstrapper'
 import { hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
+import Loadable from 'react-loadable'
 import { ConnectedRouter } from 'connected-react-router'
 
 import createStore, { history } from 'store'
@@ -10,25 +9,20 @@ import App from 'App'
 
 const store = createStore(window.__INITIAL_STATE__)
 
-const rehydrateState = window.ASYNC_COMPONENTS_STATE
-
 if (!__DEV__) {
   delete window.__INITIAL_STATE__
-  delete window.ASYNC_COMPONENTS_STATE
 }
 
 const render = () => {
   const app = (
-    <AsyncComponentProvider rehydrateState={rehydrateState}>
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
-      </Provider>
-    </AsyncComponentProvider>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
+    </Provider>
   )
 
-  asyncBootstrapper(app).then(() =>
+  Loadable.preloadReady().then(() =>
     hydrate(app, document.getElementById('app')),
   )
 }

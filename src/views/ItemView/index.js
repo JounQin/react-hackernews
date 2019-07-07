@@ -36,13 +36,9 @@ export default class ItemView extends React.PureComponent {
     loading: false,
   }
 
-  bootstrap() {
-    const { id } = this.props.match.params
-    if (this.props.items[id]) {
-      return true
-    }
-
-    return this.props.fetchItems([id]).then(() => true)
+  static preload({ match, store }) {
+    const { id } = match.params
+    return store.dispatch(fetchItems([id]))
   }
 
   get item() {
@@ -77,10 +73,6 @@ export default class ItemView extends React.PureComponent {
           ),
         )
     }
-  }
-
-  componentDidMount() {
-    this.fetchItems()
   }
 
   render() {

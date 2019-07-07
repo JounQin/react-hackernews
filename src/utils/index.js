@@ -24,5 +24,3 @@ function pluralize(time, label) {
   }
   return time + label + 's'
 }
-
-export const shared = {}

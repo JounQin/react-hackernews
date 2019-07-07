@@ -1,36 +1,47 @@
 import React from 'react'
-import asyncBootstrapper from 'react-async-bootstrapper'
-import {
-  AsyncComponentProvider,
-  createAsyncContext,
-} from 'react-async-component'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
+import { matchRoutes } from 'react-router-config'
+import Loadable from 'react-loadable'
 
 import createStore from 'store'
-import App from 'App'
+import App, { routes } from 'App'
+
+const preloadAll = Loadable.preloadAll()
 
 export default context =>
   // eslint-disable-next-line no-async-promise-executor
   new Promise(async (resolve, reject) => {
-    const { ctx } = context
+    await preloadAll
 
-    const asyncContext = (context.asyncContext = createAsyncContext())
+    const { ctx } = context
 
     const store = createStore()
 
-    const app = (
-      <AsyncComponentProvider asyncContext={asyncContext}>
-        <Provider store={store}>
-          <StaticRouter location={ctx.url} context={context}>
-            <App />
-          </StaticRouter>
-        </Provider>
-      </AsyncComponentProvider>
-    )
+    const matched = matchRoutes(routes, ctx.url)
 
     try {
-      await asyncBootstrapper(app)
+      for (const {
+        match,
+        route: { component },
+      } of matched) {
+        let comp
+
+        if (typeof component.preload === 'function') {
+          comp = await component.preload()
+        }
+
+        if (!comp) {
+          continue
+        }
+        if ('default' in comp) {
+          comp = comp.default || comp
+        }
+        if (typeof comp.preload === 'function') {
+          await comp.preload({ match, store, context })
+        }
+      }
+
       const { status, url } = context
       if (status || url) {
         return reject(context)
@@ -42,5 +53,11 @@ export default context =>
     // eslint-disable-next-line require-atomic-updates
     context.state = store.getState()
 
-    resolve(app)
+    resolve(
+      <Provider store={store}>
+        <StaticRouter location={ctx.url} context={context}>
+          <App />
+        </StaticRouter>
+      </Provider>,
+    )
   })

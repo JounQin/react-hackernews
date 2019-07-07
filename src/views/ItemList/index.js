@@ -16,7 +16,7 @@ import {
   ensureActiveItems,
   fetchListData,
 } from 'store'
-import { withSsr, shared } from 'utils'
+import { withSsr } from 'utils'
 import Item from 'components/Item'
 import Spinner from 'components/Spinner'
 
@@ -83,10 +83,6 @@ export default class ItemList extends React.PureComponent {
     this.props.setLoading(true)
 
     this.props.fetchListData().then(() => {
-      if (!this._mounted) {
-        return
-      }
-
       if (this.page < 0 || this.page > this.maxPage) {
         this.props.history.replace(`/${this.props.type}`)
         return
@@ -101,13 +97,9 @@ export default class ItemList extends React.PureComponent {
           itemTransition: '',
           transition,
         },
-        () => {
+        () =>
           setTimeout(
             () => {
-              if (!this._mounted) {
-                return
-              }
-
               this.setState(
                 {
                   displayedPage: to,
@@ -119,8 +111,7 @@ export default class ItemList extends React.PureComponent {
               )
             },
             transition ? 500 : 0,
-          )
-        },
+          ),
       )
     })
   }
@@ -130,12 +121,6 @@ export default class ItemList extends React.PureComponent {
   }
 
   componentDidMount() {
-    this._mounted = true
-
-    if (shared.appMounted) {
-      this.loadItems()
-    }
-
     const { type } = this.props
 
     this.unwatchList = watchList(type, ids => {
@@ -165,7 +150,6 @@ export default class ItemList extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this._mounted = false
     this.unwatchList()
     this.unwatchPage()
   }
