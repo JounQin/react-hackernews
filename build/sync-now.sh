@@ -15,4 +15,4 @@ echo 'prepared successfully'
 
 cd sync
 now --public
-now alias
+now alias react-hn
