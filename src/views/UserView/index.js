@@ -2,10 +2,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 
+import styles from './styles'
+
 import { fetchUser } from 'store'
 import { withSsr, timeAgo } from 'utils'
-
-import styles from './styles'
 
 const USER_NOT_FOUND = 'User Not Found'
 

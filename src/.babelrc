@@ -21,7 +21,17 @@
         "loose": true
       }
     ],
-    "@babel/syntax-dynamic-import"
+    "@babel/syntax-dynamic-import",
+    [
+      "module-resolver",
+      {
+        "extensions": [".js", ".jsx", ".scss"],
+        "root": ["./src"],
+        "alias": {
+          "create-api": "./src/api/create-api-client"
+        }
+      }
+    ]
   ],
   "env": {
     "production": {

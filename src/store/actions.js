@@ -1,11 +1,11 @@
+import TYPES from './types'
+import { activeIds } from './selectors'
+
 import {
   fetchIdsByType as _fetchIdsByType,
   fetchItems as _fetchItems,
   fetchUser as _fetchUser,
 } from 'api'
-
-import TYPES from './types'
-import { activeIds } from './selectors'
 
 export const setLoading = loading => ({
   type: TYPES.SET_LOADING,

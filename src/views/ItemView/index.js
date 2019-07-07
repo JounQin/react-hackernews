@@ -3,13 +3,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import styles from './styles'
+
 import Spinner from 'components/Spinner'
 import Comment from 'components/Comment'
-
 import { fetchItems } from 'store'
 import { withSsr, host, timeAgo } from 'utils'
-
-import styles from './styles'
 
 @connect(
   ({ items }) => ({ items }),

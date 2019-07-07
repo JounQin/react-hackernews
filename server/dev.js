@@ -4,7 +4,6 @@ import MFS from 'memory-fs'
 import webpack from 'webpack'
 
 import { resolve } from '../build/config'
-
 import clientConfig from '../build/react.client.babel'
 import serverConfig from '../build/react.server.babel'
 

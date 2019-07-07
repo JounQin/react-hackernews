@@ -62,6 +62,7 @@ const middlewares = [
 
     const context = { ctx, title: 'React Hackernews' }
 
+    // eslint-disable-next-line require-atomic-updates
     ctx.respond = false
 
     const { res } = ctx

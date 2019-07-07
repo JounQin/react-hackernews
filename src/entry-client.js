@@ -6,7 +6,6 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 
 import createStore, { history } from 'store'
-
 import App from 'App'
 
 const store = createStore(window.__INITIAL_STATE__)

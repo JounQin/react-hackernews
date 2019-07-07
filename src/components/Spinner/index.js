@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { withSsr } from 'utils'
-
 import styles from './styles'
+
+import { withSsr } from 'utils'
 
 const Spinner = ({ show }) =>
   show ? (

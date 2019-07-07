@@ -3,9 +3,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { withSsr, timeAgo } from 'utils'
-
 import styles from './styles'
+
+import { withSsr, timeAgo } from 'utils'
 
 const Comment = connect(({ items }) => ({ comments: items }))(
   withSsr(styles)(

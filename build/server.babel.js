@@ -1,7 +1,6 @@
 import nodeExternals from 'webpack-node-externals'
 
 import { NODE_ENV, resolve } from './config'
-
 import { babelLoader } from './base'
 
 export default {

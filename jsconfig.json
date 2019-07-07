@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "paths": {
+      "*": ["src/*"],
+      "create-api": ["src/api/create-api-client", "src/api/create-api-server"]
+    }
+  }
+}

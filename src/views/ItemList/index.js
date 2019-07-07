@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
+import styles from './styles'
+
 import { watchList } from 'api'
 import {
   activeItems,
@@ -15,11 +17,8 @@ import {
   fetchListData,
 } from 'store'
 import { withSsr, shared } from 'utils'
-
 import Item from 'components/Item'
 import Spinner from 'components/Spinner'
-
-import styles from './styles'
 
 @connect(
   (state, props) => ({

@@ -4,7 +4,6 @@ import nodeExternals from 'webpack-node-externals'
 import { ReactSSRServerPlugin } from 'react-server-renderer/server-plugin'
 
 import { resolve } from './config'
-
 import base, { babelLoader } from './base'
 
 export default merge.smart(base, {

@@ -4,7 +4,6 @@ import { ReactSSRClientPlugin } from 'react-server-renderer/client-plugin'
 import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin'
 
 import { __DEV__, publicPath, hasType, resolve } from './config'
-
 import base, { babelLoader } from './base'
 
 const clientConfig = merge.smart(base, {

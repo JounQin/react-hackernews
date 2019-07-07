@@ -8,10 +8,10 @@ import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 
 import createStore from 'store'
-
 import App from 'App'
 
 export default context =>
+  // eslint-disable-next-line no-async-promise-executor
   new Promise(async (resolve, reject) => {
     const { ctx } = context
 
@@ -39,6 +39,7 @@ export default context =>
       return reject(e)
     }
 
+    // eslint-disable-next-line require-atomic-updates
     context.state = store.getState()
 
     resolve(app)

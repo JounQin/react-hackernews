@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import { withSsr, host, timeAgo } from 'utils'
+import styles from './styles'
 
-import styles from './styles.scss'
+import { withSsr, host, timeAgo } from 'utils'
 
 const Item = ({ item }) => (
   <li className="news-item">
