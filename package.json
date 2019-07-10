@@ -82,7 +82,7 @@
     "koa-logger": "^3.2.0",
     "koa-mount": "^4.0.0",
     "koa-static-cache": "^5.1.2",
-    "lodash-es": "^4.17.11",
+    "lodash-es": "^4.17.14",
     "lru-cache": "^5.1.1",
     "path-to-regexp": "^3.0.0",
     "react": "^16.8.6",
