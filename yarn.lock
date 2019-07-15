@@ -4838,10 +4838,10 @@ koa-static-cache@^5.1.2:
     mime-types "^2.1.8"
     mz "^2.7.0"
 
-koa-webpack@^5.2.3:
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/koa-webpack/-/koa-webpack-5.2.3.tgz#0fd510c770c0ae8e6e98e568ea0f121a41926001"
-  integrity sha512-EbjGpCDE4K0GeKsQY+rb/bOfgel4QsBGwsI+pt3g0m1SQDDnXqpwFlWEz2V2Wm7rEDWnlK0MQ7o0vWHYmOCmmA==
+koa-webpack@^5.2.4:
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/koa-webpack/-/koa-webpack-5.2.4.tgz#817b67655e36ca9942c3cae93f6572d5898732cd"
+  integrity sha512-NQmX3p65P2Y0sb7WonkfbZRPGrvQYCGjcr4kp9k/hp6GhnZcvY+ZP+LHH4FWvxaCG63nPEx2S2p9jHmH4ErsVw==
   dependencies:
     "@hapi/joi" "^15.0.0"
     app-root-path "^2.0.1"
