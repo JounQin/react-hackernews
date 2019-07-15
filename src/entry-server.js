@@ -28,15 +28,15 @@ export default context =>
         let comp
 
         if (typeof component.preload === 'function') {
-          comp = await component.preload()
+          comp = await component.preload({ match, store, context })
         }
 
         if (!comp) {
           continue
         }
-        if ('default' in comp) {
-          comp = comp.default || comp
-        }
+
+        comp = (comp && comp.default) || comp
+
         if (typeof comp.preload === 'function') {
           await comp.preload({ match, store, context })
         }
@@ -50,8 +50,11 @@ export default context =>
       return reject(e)
     }
 
-    // eslint-disable-next-line require-atomic-updates
-    context.state = store.getState()
+    Object.defineProperty(context, 'state', {
+      get() {
+        return store.getState()
+      },
+    })
 
     resolve(
       <Provider store={store}>

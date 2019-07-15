@@ -48,9 +48,7 @@ const Comment = ({ comments, id }) => {
         </>
       ) : null}
     </li>
-  ) : (
-    'No Comment'
-  )
+  ) : null
 }
 
 Comment.propTypes = {
