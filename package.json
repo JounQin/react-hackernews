@@ -1,6 +1,6 @@
 {
   "name": "react-hackernews",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "HackerNews clone built with React, ReactRouter & Redux, with server-side rendering",
   "repository": "git@github.com:JounQin/react-hackernews.git",
   "author": "JounQin <admin@1stg.me>",
@@ -30,7 +30,7 @@
     "koa-cash": "^3.1.0-0",
     "koa-compose": "^4.1.0",
     "koa-compress": "^3.0.0",
-    "koa-logger": "^3.2.0",
+    "koa-logger": "^3.2.1",
     "koa-mount": "^4.0.0",
     "koa-static-cache": "^5.1.2",
     "lodash-es": "^4.17.14",
