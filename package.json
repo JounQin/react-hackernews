@@ -1,6 +1,6 @@
 {
   "name": "react-hackernews",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "HackerNews clone built with React, ReactRouter & Redux, with server-side rendering",
   "repository": "git@github.com:JounQin/react-hackernews.git",
   "author": "JounQin <admin@1stg.me>",
@@ -86,7 +86,7 @@
     "sass": "^1.22.5",
     "sass-loader": "webpack-contrib/sass-loader",
     "sw-precache-webpack-plugin": "^0.11.5",
-    "webpack": "^4.36.0",
+    "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6",
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
