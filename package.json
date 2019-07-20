@@ -1,6 +1,6 @@
 {
   "name": "react-hackernews",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "HackerNews clone built with React, ReactRouter & Redux, with server-side rendering",
   "repository": "git@github.com:JounQin/react-hackernews.git",
   "author": "JounQin <admin@1stg.me>",
@@ -24,16 +24,16 @@
     "connected-react-router": "^6.5.2",
     "cross-env": "^5.2.0",
     "debug": "^4.1.1",
-    "firebase": "^6.3.0",
+    "firebase": "^6.3.1",
     "history": "^4.9.0",
     "koa": "^2.7.0",
     "koa-cash": "^3.1.0-0",
     "koa-compose": "^4.1.0",
     "koa-compress": "^3.0.0",
-    "koa-logger": "^3.2.0",
+    "koa-logger": "^3.2.1",
     "koa-mount": "^4.0.0",
     "koa-static-cache": "^5.1.2",
-    "lodash-es": "^4.17.14",
+    "lodash-es": "^4.17.15",
     "lru-cache": "^5.1.1",
     "path-to-regexp": "^3.0.0",
     "react": "^16.8.6",
@@ -50,31 +50,31 @@
     "serialize-javascript": "^1.7.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.4",
-    "@babel/node": "^7.5.0",
-    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.4.4",
+    "@babel/register": "^7.5.5",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "babel-plugin-dynamic-import-node": "^2.3.0",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "css-loader": "^3.0.0",
+    "css-loader": "^3.1.0",
     "cssnano": "^4.1.10",
     "eslint": "^6.0.1",
-    "eslint-config-1stg": "^4.1.0",
+    "eslint-config-1stg": "^4.2.0",
     "eslint-import-resolver-babel-module": "^5.1.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-minifier": "^4.0.0",
-    "husky": "^3.0.0",
-    "koa-webpack": "^5.2.3",
+    "husky": "^3.0.1",
+    "koa-webpack": "^5.2.4",
     "lint-staged": "^9.2.0",
-    "mini-css-extract-plugin": "^0.7.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "npm-run-all": "^4.1.5",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.18.2",
@@ -83,10 +83,10 @@
     "pug-plain-loader": "^1.0.0",
     "react-style-loader": "^2.3.0",
     "rimraf": "^2.6.3",
-    "sass": "^1.22.4",
+    "sass": "^1.22.7",
     "sass-loader": "webpack-contrib/sass-loader",
     "sw-precache-webpack-plugin": "^0.11.5",
-    "webpack": "^4.35.3",
+    "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6",
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
@@ -135,20 +135,10 @@
       "git add"
     ]
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
+  "prettier": "prettier-config-1stg",
   "renovate": {
     "extends": [
-      "config:base"
-    ],
-    "automerge": true,
-    "major": {
-      "automerge": false
-    },
-    "bumpVersion": "patch",
-    "rangeStrategy": "bump"
+      "1stg"
+    ]
   }
 }
