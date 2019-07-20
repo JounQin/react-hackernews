@@ -1,6 +1,5 @@
 # react-hackernews
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/JounQin/react-hackernews.svg)](https://greenkeeper.io/)
 [![Travis](https://img.shields.io/travis/JounQin/react-hackernews.svg)](https://travis-ci.org/JounQin/react-hackernews)
 [![David](https://img.shields.io/david/JounQin/react-hackernews.svg)](https://david-dm.org/JounQin/react-hackernews)
 [![David Dev](https://img.shields.io/david/dev/JounQin/react-hackernews.svg)](https://david-dm.org/JounQin/react-hackernews?type=dev)
