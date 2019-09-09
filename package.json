@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "connected-react-router": "^6.5.2",
-    "cross-env": "^5.2.0",
+    "cross-env": "^5.2.1",
     "debug": "^4.1.1",
     "firebase": "^6.4.2",
     "history": "^4.9.0",
