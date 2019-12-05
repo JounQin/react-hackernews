@@ -47,7 +47,7 @@
     "react-transition-group": "^4.2.2",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
-    "serialize-javascript": "^1.7.0"
+    "serialize-javascript": "^2.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
