@@ -82,7 +82,7 @@
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
     "react-style-loader": "^2.3.0",
-    "rimraf": "^2.7.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.22.12",
     "sass-loader": "webpack-contrib/sass-loader",
     "sw-precache-webpack-plugin": "^0.11.5",
