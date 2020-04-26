@@ -21,7 +21,7 @@
     "prune": "yarn install --production --ignore-optional --ignore-scripts --prefer-offline --force"
   },
   "dependencies": {
-    "connected-react-router": "^6.5.2",
+    "connected-react-router": "^6.8.0",
     "cross-env": "^5.2.1",
     "debug": "^4.1.1",
     "firebase": "^6.6.2",
