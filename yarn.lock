@@ -755,7 +755,7 @@
     pirates "^4.0.0"
     source-map-support "^0.5.9"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.5":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.4.0":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
   integrity sha512-28QvEGyQyNkB0/m2B4FU7IEZGK2NUrcMtT6BZEFALTguLk+AUT6ofsHtPk5QyjAdUkpMJ+/Em+quwz4HOt30AQ==
@@ -768,6 +768,13 @@
   integrity sha512-89eSBLJsxNxOERC0Op4vd+0Bqm6wRMqMbFtV3i0/fbaWw/mJ8Q3eBvgX0G4SyrOOLCtbu98HspF8o09MRT+KzQ==
   dependencies:
     regenerator-runtime "^0.13.2"
+
+"@babel/runtime@^7.8.7":
+  version "7.9.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
+  integrity sha512-64AF1xY3OAkFHqOb9s4jpgk1Mm5vDZ4L3acHvAml+53nO1XbXLuDodsVpO4OIUsmemlUHMxNdYMNJmsvOwLrvQ==
+  dependencies:
+    regenerator-runtime "^0.13.4"
 
 "@babel/template@^7.1.0", "@babel/template@^7.4.4":
   version "7.4.4"
@@ -2773,6 +2780,11 @@ csso@^3.5.1:
   dependencies:
     css-tree "1.0.0-alpha.29"
 
+csstype@^2.6.7:
+  version "2.6.10"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.10.tgz#e63af50e66d7c266edb6b32909cfd0aabe03928b"
+  integrity sha512-D34BqZU4cIlMCY93rZHbrq9pjTAQJ3U8S8rfBqjwHxkGPThWFjzZDQpgMJY0QViLxth6ZKYiwFBo14RdN44U/w==
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
@@ -2989,12 +3001,13 @@ doctypes@^1.1.0:
   resolved "https://registry.yarnpkg.com/doctypes/-/doctypes-1.1.0.tgz#ea80b106a87538774e8a3a4a5afe293de489e0a9"
   integrity sha1-6oCxBqh1OHdOijpKWv4pPeSJ4Kk=
 
-dom-helpers@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.4.0.tgz#e9b369700f959f62ecde5a6babde4bccd9169af8"
-  integrity sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA==
+dom-helpers@^5.0.1:
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-5.1.4.tgz#4609680ab5c79a45f2531441f1949b79d6587f4b"
+  integrity sha512-TjMyeVUvNEnOnhzs6uAn9Ya47GmMo3qq7m+Lr/3ON0Rs5kHvb8I+SQYjLUSYn7qhEm0QjW0yrBkvz9yOrwwz1A==
   dependencies:
-    "@babel/runtime" "^7.1.2"
+    "@babel/runtime" "^7.8.7"
+    csstype "^2.6.7"
 
 dom-serializer@0:
   version "0.1.1"
@@ -7350,13 +7363,13 @@ react-style-loader@^2.3.0:
     hash-sum "^1.0.2"
     loader-utils "^1.1.0"
 
-react-transition-group@^4.2.2:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.2.2.tgz#8b5252410180c27fd7eebf50b185256b41799b16"
-  integrity sha512-uP0tjqewtvjb7kGZFpZYPoD/NlVZmIgts9eTt1w35pAaEApPxQGv94lD3VkqyXf2aMqrSGwhs6EV/DLaoKbLSw==
+react-transition-group@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.1.tgz#63868f9325a38ea5ee9535d828327f85773345c9"
+  integrity sha512-Djqr7OQ2aPUiYurhPalTrVy9ddmFCCzwhqQmtN+J3+3DzLO209Fdr70QrN8Z3DsglWql6iY1lDWAfpFiBtuKGw==
   dependencies:
-    "@babel/runtime" "^7.4.5"
-    dom-helpers "^3.4.0"
+    "@babel/runtime" "^7.5.5"
+    dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
@@ -7493,6 +7506,11 @@ regenerator-runtime@^0.13.2, regenerator-runtime@^0.13.3:
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz#7cf6a77d8f5c6f60eb73c5fc1955b2ceb01e6bf5"
   integrity sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
+
+regenerator-runtime@^0.13.4:
+  version "0.13.5"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.5.tgz#d878a1d094b4306d10b9096484b33ebd55e26697"
+  integrity sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA==
 
 regenerator-transform@^0.14.0:
   version "0.14.1"
