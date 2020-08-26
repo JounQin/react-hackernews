@@ -24,7 +24,7 @@
     "connected-react-router": "^6.5.2",
     "cross-env": "^5.2.1",
     "debug": "^4.1.1",
-    "firebase": "^6.6.2",
+    "firebase": "^7.19.0",
     "history": "^4.10.1",
     "koa": "^2.8.1",
     "koa-cash": "^3.1.0-0",
