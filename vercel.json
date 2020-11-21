@@ -1,0 +1,13 @@
+{
+  "name": "react-hackernews",
+  "version": 2,
+  "alias": [
+    "react-hn.vercel.app"
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "https://react-hacknews.herokuapp.com/$1"
+    }
+  ]
+}

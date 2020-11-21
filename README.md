@@ -8,7 +8,7 @@
 HackerNews clone built with React, ReactRouter &amp; Redux, with full page server-side rendering
 
 <p align="center">
-  <a href="https://react-hn.now.sh" target="_blank" rel="noopener noreferrer">
+  <a href="https://react-hacknews.herokuapp.com" target="_blank" rel="noopener noreferrer">
     <img width="720" alt="react-hackernews" src="https://user-images.githubusercontent.com/8336744/45299799-387bba80-b53f-11e8-8ba1-d2a5b1d9f201.png">
     <br>
     Live Demo
