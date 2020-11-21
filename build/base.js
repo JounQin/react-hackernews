@@ -19,7 +19,10 @@ const cssLoaders = manualInject => [
     : MiniCssExtractPlugin.loader,
   {
     loader: 'css-loader',
-    options,
+    options: {
+      ...options,
+      esModule: false,
+    },
   },
   {
     loader: 'postcss-loader',
@@ -31,27 +34,12 @@ const cssLoaders = manualInject => [
   },
 ]
 
-export const babelLoader = isServer => ({
+export const babelLoader = _isServer => ({
   test: /\.js$/,
   loader: 'babel-loader',
   exclude: /node_modules/,
   options: {
     cacheDirectory: true,
-    ...(isServer && {
-      presets: [
-        [
-          '@babel/env',
-          {
-            modules: false,
-            exclude: [
-              'babel-plugin-transform-async-to-generator',
-              'babel-plugin-transform-regenerator',
-            ],
-          },
-        ],
-      ],
-      // plugins: ['dynamic-import-node'],
-    }),
   },
 })
 

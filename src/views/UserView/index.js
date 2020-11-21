@@ -42,6 +42,7 @@ export default class UserView extends React.PureComponent {
   static propTypes = {
     match: PropTypes.object.isRequired,
     users: PropTypes.object.isRequired,
+    // eslint-disable-next-line react/no-unused-prop-types
     fetchUser: PropTypes.func.isRequired,
   }
 

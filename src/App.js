@@ -10,6 +10,7 @@ import Loadable from 'react-loadable'
 import 'styles/app'
 
 const resolver = loader =>
+  // eslint-disable-next-line babel/new-cap
   Loadable({
     loader,
     loading: () => null,
@@ -98,7 +99,7 @@ export default class App extends React.PureComponent {
       <>
         <header className="header">
           <div className="header-content">
-            <NavLink to="/" exact>
+            <NavLink to="/" exact={true}>
               <img className="logo" src="/public/logo.svg" alt="React Logo" />
             </NavLink>
             <nav className="inner">

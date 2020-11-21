@@ -1,12 +1,12 @@
 import webpack from 'webpack'
-import merge from 'webpack-merge'
+import { merge } from 'webpack-merge'
 import nodeExternals from 'webpack-node-externals'
 import { ReactSSRServerPlugin } from 'react-server-renderer/server-plugin'
 
 import { resolve } from './config'
 import base, { babelLoader } from './base'
 
-export default merge.smart(base, {
+export default merge(base, {
   entry: resolve('src/entry-server.js'),
   resolve: {
     alias: {
@@ -20,7 +20,7 @@ export default merge.smart(base, {
     libraryTarget: 'commonjs2',
   },
   externals: nodeExternals({
-    whitelist: /\.s?css$/,
+    allowlist: /\.s?css$/,
   }),
   module: {
     rules: [babelLoader(true)],

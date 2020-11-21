@@ -33,6 +33,9 @@ let ready, renderer
 
 const MAX_AGE = 1000 * 3600 * 24 * 365 // one year
 
+const STATUS_OK = 200
+const STATUS_NOT_FOUND = 404
+
 const cache = new LRU(1000)
 
 const middlewares = [
@@ -62,7 +65,6 @@ const middlewares = [
 
     const context = { ctx, title: 'React Hackernews' }
 
-    // eslint-disable-next-line require-atomic-updates
     ctx.respond = false
 
     const { res } = ctx
@@ -70,10 +72,15 @@ const middlewares = [
     renderer
       .renderToStream(context)
       .on('afterRender', () => {
-        ctx.status = context.code || 200
+        ctx.status = context.code || STATUS_OK
         ctx.set({
           'Content-Type': 'text/html',
         })
+      })
+      .on('end', () => {
+        console.log(context)
+        console.log(context.styles)
+        console.log(context.renderStyles())
       })
       .on('error', e => {
         const { status, url } = e
@@ -86,13 +93,12 @@ const middlewares = [
 
         ctx.status = status || 500
 
-        switch (status) {
-          case 404:
-            return res.end('404 | Page Not Found')
-          default:
-            res.end('500 | Internal Server Error')
-            debug(`error during render : ${url}`)
-            debug(e.stack)
+        if (status === STATUS_NOT_FOUND) {
+          return res.end('404 | Page Not Found')
+        } else {
+          res.end('500 | Internal Server Error')
+          debug(`error during render : ${url}`)
+          debug(e.stack)
         }
       })
       .pipe(res)

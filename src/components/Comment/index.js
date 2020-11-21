@@ -9,6 +9,7 @@ import { withSsr, timeAgo } from 'utils'
 
 const pluralize = n => n + (n === 1 ? ' reply' : ' replies')
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const Comment = ({ comments, id }) => {
   const [open, setOpen] = useState(true)
 
@@ -28,7 +29,7 @@ const Comment = ({ comments, id }) => {
           __html: comment.text || '<del>[Deleted]</del>',
         }}
       />
-      {comment.kids && comment.kids.length ? (
+      {comment.kids && comment.kids.length > 0 ? (
         <>
           <div className={'toggle' + (open ? ' open' : '')}>
             <a onClick={() => setOpen(!open)}>

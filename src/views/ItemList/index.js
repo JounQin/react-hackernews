@@ -1,5 +1,5 @@
 import { startCase } from 'lodash'
-import p2r from 'path-to-regexp'
+import { pathToRegexp } from 'path-to-regexp'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
@@ -139,7 +139,7 @@ export default class ItemList extends React.PureComponent {
       } = this.props.match
       if (
         this.isSameLocation(this.props.location, location) ||
-        !p2r(path).exec(location.pathname)
+        !pathToRegexp(path).exec(location.pathname)
       ) {
         return
       }

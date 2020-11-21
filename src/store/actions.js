@@ -57,7 +57,7 @@ export const fetchItems = ids => (dispatch, getState) => {
     return false
   })
 
-  if (ids.length) {
+  if (ids.length > 0) {
     return _fetchItems(ids).then(items => dispatch(setItems(items)))
   } else {
     return Promise.resolve()

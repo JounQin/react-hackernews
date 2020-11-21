@@ -1,45 +1,26 @@
 {
   "presets": [
     [
-      "@babel/env",
+      "@1stg",
       {
-        "modules": false
-      }
-    ],
-    "@babel/react"
-  ],
-  "plugins": [
-    [
-      "@babel/proposal-decorators",
-      {
-        "legacy": true
-      }
-    ],
-    [
-      "@babel/proposal-class-properties",
-      {
-        "loose": true
-      }
-    ],
-    "@babel/syntax-dynamic-import",
-    [
-      "module-resolver",
-      {
-        "extensions": [".js", ".jsx", ".scss"],
-        "root": ["./src"]
+        "react": true,
+        "isTSX": true
       }
     ]
   ],
-  "env": {
-    "production": {
-      "plugins": [
-        [
-          "transform-react-remove-prop-types",
-          {
-            "removeImport": true
-          }
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".scss"
+        ],
+        "root": [
+          "./src"
         ]
-      ]
-    }
-  }
+      }
+    ]
+  ]
 }

@@ -22,8 +22,8 @@ const render = () => {
     </Provider>
   )
 
-  Loadable.preloadReady().then(() =>
-    hydrate(app, document.getElementById('app')),
+  return Loadable.preloadReady().then(() =>
+    hydrate(app, document.querySelector('#app')),
   )
 }
 

@@ -8,15 +8,17 @@ export const hasType = __DEV__ ? 'hash' : 'contenthash'
 
 export const serverHost = '0.0.0.0'
 
-export const serverPort = process.env.PORT || 4000
+const DEFAULT_PORT = 4000
+
+export const serverPort = process.env.PORT || DEFAULT_PORT
 
 export const publicPath = '/'
 
 export const { resolve } = path
 
 export const runtimeRequire =
-  // eslint-disable-next-line camelcase
+  // eslint-disable-next-line babel/camelcase
   typeof __non_webpack_require__ === 'undefined'
     ? require
-    : // eslint-disable-next-line no-undef,camelcase
+    : // eslint-disable-next-line babel/camelcase
       __non_webpack_require__

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { withRouter } from 'react-router'
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export const withSsr = (styles, router = true, title) => {
   if (typeof router !== 'boolean') {
     title = router
@@ -10,10 +11,10 @@ export const withSsr = (styles, router = true, title) => {
   }
 
   return Component => {
-    class SsrConmponent extends React.PureComponent {
-      static displayName = `Ssr${Component.displayName ||
-        Component.name ||
-        'Component'}`
+    class SsrComponent extends React.PureComponent {
+      static displayName = `Ssr${
+        Component.displayName || Component.name || 'Component'
+      }`
 
       static propTypes = {
         staticContext: PropTypes.object,
@@ -22,6 +23,7 @@ export const withSsr = (styles, router = true, title) => {
       constructor(props, context) {
         super(props, context)
         if (styles.__inject__) {
+          console.log('__inject__')
           styles.__inject__(this.props.staticContext)
         }
 
@@ -53,7 +55,7 @@ export const withSsr = (styles, router = true, title) => {
     }
 
     return hoistStatics(
-      router ? withRouter(SsrConmponent) : SsrConmponent,
+      router ? withRouter(SsrComponent) : SsrComponent,
       Component,
     )
   }
