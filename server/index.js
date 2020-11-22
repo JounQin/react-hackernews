@@ -77,11 +77,6 @@ const middlewares = [
           'Content-Type': 'text/html',
         })
       })
-      .on('end', () => {
-        console.log(context)
-        console.log(context.styles)
-        console.log(context.renderStyles())
-      })
       .on('error', e => {
         const { status, url } = e
 

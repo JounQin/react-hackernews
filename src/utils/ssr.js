@@ -23,7 +23,6 @@ export const withSsr = (styles, router = true, title) => {
       constructor(props, context) {
         super(props, context)
         if (styles.__inject__) {
-          console.log('__inject__')
           styles.__inject__(this.props.staticContext)
         }
 

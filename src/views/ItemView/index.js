@@ -48,7 +48,7 @@ export default class ItemView extends React.PureComponent {
   fetchItems() {
     const { item } = this
 
-    if (!item || !item.kids) {
+    if (!item?.kids) {
       return
     }
 
@@ -64,7 +64,7 @@ export default class ItemView extends React.PureComponent {
   }
 
   fetchComments(item) {
-    if (item && item.kids) {
+    if (item?.kids) {
       return this.props
         .fetchItems(item.kids)
         .then(() =>
@@ -73,6 +73,10 @@ export default class ItemView extends React.PureComponent {
           ),
         )
     }
+  }
+
+  componentDidMount() {
+    this.fetchItems()
   }
 
   render() {
