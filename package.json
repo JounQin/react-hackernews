@@ -70,7 +70,7 @@
     "postcss": "^8.1.9",
     "postcss-loader": "^4.1.0",
     "prop-types": "^15.7.2",
-    "pug": "^3.0.0",
+    "pug": "^3.0.1",
     "pug-plain-loader": "^1.0.0",
     "react-style-loader": "^2.3.0",
     "rimraf": "^3.0.2",
