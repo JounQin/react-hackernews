@@ -85,7 +85,7 @@
   },
   "resolutions": {
     "imagemin-gifsicle": "^6.0.1",
-    "prettier": "^2.2.0"
+    "prettier": "^2.7.1"
   },
   "browserslist": [
     "extends @1stg/browserslist-config"
