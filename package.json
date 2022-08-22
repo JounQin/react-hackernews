@@ -74,7 +74,7 @@
     "pug-plain-loader": "^1.1.0",
     "react-style-loader": "^2.3.0",
     "rimraf": "^3.0.2",
-    "sass": "^1.29.0",
+    "sass": "^1.54.5",
     "sass-loader": "^10.1.0",
     "sw-precache-webpack-plugin": "^1.0.0",
     "webpack": "^4.44.2",
