@@ -42,7 +42,10 @@ const Comment = ({ comments, id }) => {
             style={{ display: open ? 'block' : 'none' }}
           >
             {comment.kids.map(id => (
-              <Comment key={id} id={id} />
+              <Comment
+                key={id}
+                id={id}
+              />
             ))}
           </ul>
         </>

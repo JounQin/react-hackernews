@@ -1,0 +1,13 @@
+.*rc
+.gitignore
+*.ico
+*.js
+*.json
+*.lock
+*.md
+*.pug
+*.svg
+*.yml
+dist
+node_modules
+LICENSE

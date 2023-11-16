@@ -1,3 +1,4 @@
+// eslint-disable-next-line unicorn/prefer-node-protocol
 import fs from 'fs'
 
 import _debug from 'debug'
@@ -25,7 +26,7 @@ const template = __DEV__
   ? require('pug').renderFile(resolve('server/template.pug'), {
       pretty: true,
     })
-  : fs.readFileSync(resolve('dist/template.html'), 'utf-8')
+  : fs.readFileSync(resolve('dist/template.html'), 'utf8')
 
 const app = new Koa()
 
@@ -56,7 +57,7 @@ const middlewares = [
     if (
       ctx.method !== 'GET' ||
       ctx.url.lastIndexOf('.') > ctx.url.lastIndexOf('/') ||
-      !['*/*', 'text/html'].find(mimeType =>
+      !['*/*', 'text/html'].some(mimeType =>
         ctx.get('Accept').includes(mimeType),
       )
     ) {
@@ -78,7 +79,7 @@ const middlewares = [
         })
       })
       .on('error', e => {
-        const { status, url } = e
+        const { status, url, stack } = e
 
         if (url) {
           ctx.status = 302
@@ -90,11 +91,10 @@ const middlewares = [
 
         if (status === STATUS_NOT_FOUND) {
           return res.end('404 | Page Not Found')
-        } else {
-          res.end('500 | Internal Server Error')
-          debug(`error during render : ${url}`)
-          debug(e.stack)
         }
+        res.end('500 | Internal Server Error')
+        debug(`error during render : ${url}`)
+        debug(stack)
       })
       .pipe(res)
   },
@@ -117,6 +117,7 @@ if (__DEV__) {
     },
   )
   ready = readyPromise
+  // eslint-disable-next-line unicorn/prefer-top-level-await
   webpackMiddlewarePromise.then(webpackMiddleware => app.use(webpackMiddleware))
 } else {
   renderer = createRenderer(

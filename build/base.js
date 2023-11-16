@@ -1,6 +1,6 @@
-import webpack from 'webpack'
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import webpack from 'webpack'
 
 import { NODE_ENV, __DEV__, hasType, resolve } from './config'
 

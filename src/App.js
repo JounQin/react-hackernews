@@ -1,16 +1,16 @@
 import { startCase } from 'lodash'
 import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
+import Loadable from 'react-loadable'
 import { Redirect } from 'react-router'
 import { renderRoutes } from 'react-router-config'
 import { withRouter, NavLink } from 'react-router-dom'
 import { Transition, TransitionGroup } from 'react-transition-group'
-import Loadable from 'react-loadable'
 
 import 'styles/app'
 
 const resolver = loader =>
-  // eslint-disable-next-line babel/new-cap
+  // eslint-disable-next-line @babel/new-cap
   Loadable({
     loader,
     loading: () => null,
@@ -99,12 +99,22 @@ export default class App extends React.PureComponent {
       <>
         <header className="header">
           <div className="header-content">
-            <NavLink to="/" exact={true}>
-              <img className="logo" src="/public/logo.svg" alt="React Logo" />
+            <NavLink
+              to="/"
+              exact={true}
+            >
+              <img
+                className="logo"
+                src="/public/logo.svg"
+                alt="React Logo"
+              />
             </NavLink>
             <nav className="inner">
               {['top', 'new', 'show', 'ask', 'job'].map(route => (
-                <NavLink key={route} to={`/${route}`}>
+                <NavLink
+                  key={route}
+                  to={`/${route}`}
+                >
                   {startCase(route)}
                 </NavLink>
               ))}
@@ -128,7 +138,10 @@ export default class App extends React.PureComponent {
             unmountOnExit={true}
           >
             {status => (
-              <div className="view" style={transitionStyles[status]}>
+              <div
+                className="view"
+                style={transitionStyles[status]}
+              >
                 {renderRoutes(routes, null, { location })}
               </div>
             )}

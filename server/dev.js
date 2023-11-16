@@ -1,6 +1,5 @@
 import _debug from 'debug'
 import koaWebpack from 'koa-webpack'
-// eslint-disable-next-line node/no-extraneous-import
 import MFS from 'memory-fs'
 import webpack from 'webpack'
 
@@ -35,9 +34,11 @@ export default after => {
 
   clientCompiler.plugin('done', stats => {
     stats = stats.toJson()
-    // eslint-disable-next-line unicorn/no-fn-reference-in-iterator
+
+    // eslint-disable-next-line unicorn/no-array-callback-reference
     stats.errors.forEach(debug)
-    // eslint-disable-next-line unicorn/no-fn-reference-in-iterator
+
+    // eslint-disable-next-line unicorn/no-array-callback-reference
     stats.warnings.forEach(debug)
 
     if (stats.errors.length > 0) {

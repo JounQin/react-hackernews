@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 
 import styles from './styles'
 
@@ -12,7 +12,11 @@ const Item = ({ item }) => (
     <span className="title">
       {item.url ? (
         <>
-          <a href={item.url} target="_blank" rel="noopener noreferrer">
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {item.title}
           </a>
           <span className="host"> ({host(item.url)})</span>
@@ -23,22 +27,22 @@ const Item = ({ item }) => (
     </span>
     <br />
     <span className="meta">
-      {item.type !== 'job' ? (
+      {item.type === 'job' ? null : (
         <span className="by">
           by <Link to={'/user/' + item.by}>{item.by}</Link>{' '}
         </span>
-      ) : null}
+      )}
       <span className="time">{timeAgo(item.time)} ago</span>
-      {item.type !== 'job' ? (
+      {item.type === 'job' ? null : (
         <span className="comments-link">
           {' '}
           | <Link to={'/item/' + item.id}>{item.descendants} comments</Link>
         </span>
-      ) : null}
+      )}
     </span>
-    {item.type !== 'story' ? (
+    {item.type === 'story' ? null : (
       <span className="label">{' ' + item.type}</span>
-    ) : null}
+    )}
   </li>
 )
 

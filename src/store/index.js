@@ -1,5 +1,5 @@
-import { createBrowserHistory, createMemoryHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
+import { createBrowserHistory, createMemoryHistory } from 'history'
 import { compose, combineReducers, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 

@@ -1,11 +1,11 @@
+import { ConnectedRouter } from 'connected-react-router'
 import React from 'react'
 import { hydrate } from 'react-dom'
-import { Provider } from 'react-redux'
 import Loadable from 'react-loadable'
-import { ConnectedRouter } from 'connected-react-router'
+import { Provider } from 'react-redux'
 
-import createStore, { history } from 'store'
 import App from 'App'
+import createStore, { history } from 'store'
 
 const store = createStore(window.__INITIAL_STATE__)
 

@@ -19,8 +19,7 @@ export default type => {
   )
   class ListView extends React.PureComponent {
     static propTypes = {
-      activeItems: PropTypes.array.isRequired,
-      fetchListData: PropTypes.func.isRequired,
+      match: PropTypes.object.isRequired,
     }
 
     static preload({ store, match }) {
@@ -28,7 +27,12 @@ export default type => {
     }
 
     render() {
-      return <ItemList type={type} {...this.props} />
+      return (
+        <ItemList
+          type={type}
+          {...this.props}
+        />
+      )
     }
   }
 

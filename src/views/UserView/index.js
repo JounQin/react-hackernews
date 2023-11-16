@@ -33,9 +33,12 @@ const USER_NOT_FOUND = 'User Not Found'
   }
 
   if (!__SERVER__) {
-    return self.props
-      .fetchUser()
-      .then(() => (self.props.users[id] ? id : USER_NOT_FOUND))
+    return (
+      self.props
+        .fetchUser()
+        // eslint-disable-next-line unicorn/consistent-destructuring
+        .then(() => (self.props.users[id] ? id : USER_NOT_FOUND))
+    )
   }
 })
 export default class UserView extends React.PureComponent {
