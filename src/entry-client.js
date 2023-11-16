@@ -13,19 +13,17 @@ if (!__DEV__) {
   delete window.__INITIAL_STATE__
 }
 
-const render = () => {
-  const app = (
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <App />
-      </ConnectedRouter>
-    </Provider>
+const render = () =>
+  Loadable.preloadReady().then(() =>
+    hydrate(
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
+      </Provider>,
+      document.querySelector('#app'),
+    ),
   )
-
-  return Loadable.preloadReady().then(() =>
-    hydrate(app, document.querySelector('#app')),
-  )
-}
 
 render()
 

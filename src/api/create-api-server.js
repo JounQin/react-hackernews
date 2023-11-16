@@ -1,5 +1,5 @@
 import Firebase from 'firebase'
-import LRU from 'lru-cache'
+import { LRUCache } from 'lru-cache'
 
 export function createAPI({ config, version }) {
   let api
@@ -14,9 +14,9 @@ export function createAPI({ config, version }) {
     api.onServer = true
 
     // fetched item cache
-    api.cachedItems = new LRU({
+    api.cachedItems = new LRUCache({
       max: 1000,
-      maxAge: 1000 * 60 * 15, // 15 min cache
+      ttl: 1000 * 60 * 15, // 15 min cache
     })
 
     // cache the latest story ids

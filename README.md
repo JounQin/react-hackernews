@@ -1,8 +1,6 @@
 # react-hackernews
 
 [![Travis](https://img.shields.io/travis/com/JounQin/react-hackernews/master.svg)](https://travis-ci.com/JounQin/react-hackernews)
-[![David](https://img.shields.io/david/JounQin/react-hackernews.svg)](https://david-dm.org/JounQin/react-hackernews)
-[![David Dev](https://img.shields.io/david/dev/JounQin/react-hackernews.svg)](https://david-dm.org/JounQin/react-hackernews?type=dev)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 HackerNews clone built with React, ReactRouter &amp; Redux, with full page server-side rendering

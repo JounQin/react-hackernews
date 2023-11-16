@@ -9,7 +9,7 @@ import compress from 'koa-compress'
 import logger from 'koa-logger'
 import mount from 'koa-mount'
 import serve from 'koa-static-cache'
-import LRU from 'lru-cache'
+import { LRUCache } from 'lru-cache'
 import { createBundleRenderer } from 'react-server-renderer'
 
 import {
@@ -37,7 +37,10 @@ const MAX_AGE = 1000 * 3600 * 24 * 365 // one year
 const STATUS_OK = 200
 const STATUS_NOT_FOUND = 404
 
-const cache = new LRU(1000)
+const cache = new LRUCache({
+  max: 1000,
+  ttl: 1000 * 60 * 15,
+})
 
 const middlewares = [
   logger(),

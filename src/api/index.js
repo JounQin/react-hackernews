@@ -18,7 +18,7 @@ if (api.onServer) {
 }
 
 function warmCache() {
-  fetchItems((api.cachedIds.top || []).slice(0, 30))
+  fetchItems((api.cachedIds?.top || []).slice(0, 30))
   setTimeout(warmCache, 1000 * 60 * 15)
 }
 
@@ -27,7 +27,7 @@ function fetch(child) {
     console.log(`fetching ${child}...`)
   }
   const cache = api.cachedItems
-  if (cache && cache.has(child)) {
+  if (cache?.has(child)) {
     if (logRequests) {
       console.log(`cache hit for ${child}.`)
     }
@@ -57,7 +57,7 @@ function fetch(child) {
 }
 
 export function fetchIdsByType(type) {
-  return api.cachedIds && api.cachedIds[type]
+  return api.cachedIds?.[type]
     ? Promise.resolve(api.cachedIds[type])
     : fetch(`${type}stories`)
 }
