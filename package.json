@@ -31,7 +31,7 @@
     "koa": "^2.13.4",
     "koa-cash": "^4.1.1",
     "koa-compose": "^4.1.0",
-    "koa-compress": "^5.0.1",
+    "koa-compress": "^5.1.1",
     "koa-logger": "^3.2.1",
     "koa-mount": "^4.0.0",
     "koa-static-cache": "^5.1.4",
