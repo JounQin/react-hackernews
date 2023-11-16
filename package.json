@@ -21,7 +21,7 @@
     "start": "cross-env DEBUG=1stg:* NODE_ENV=production node dist/server"
   },
   "dependencies": {
-    "connected-react-router": "^6.8.0",
+    "connected-react-router": "^6.9.3",
     "core-js": "^3.26.1",
     "cross-env": "^7.0.3",
     "debug": "^4.3.4",
