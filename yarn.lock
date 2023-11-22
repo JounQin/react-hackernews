@@ -13334,12 +13334,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lru-cache@npm:^10.0.1, lru-cache@npm:^10.0.2, lru-cache@npm:^9.1.1 || ^10.0.0":
+"lru-cache@npm:^10.0.1, lru-cache@npm:^9.1.1 || ^10.0.0":
   version: 10.0.2
   resolution: "lru-cache@npm:10.0.2"
   dependencies:
     semver: "npm:^7.3.5"
   checksum: a675b71a19f4b23186549e343792c3eb6196a5fca2a96b59e31a44289459b7e166b3c6cb08952f45ac29d8cfe561cabee88d906fdd5c98fb7cbda8f5d47431a3
+  languageName: node
+  linkType: hard
+
+"lru-cache@npm:^10.1.0":
+  version: 10.1.0
+  resolution: "lru-cache@npm:10.1.0"
+  checksum: 207278d6fa711fb1f94a0835d4d4737441d2475302482a14785b10515e4c906a57ebf9f35bf060740c9560e91c7c1ad5a04fd7ed030972a9ba18bce2a228e95b
   languageName: node
   linkType: hard
 
@@ -17603,7 +17610,7 @@ __metadata:
     koa-webpack: "npm:^6.0.0"
     lint-staged: "npm:^13.3.0"
     lodash-es: "npm:^4.17.21"
-    lru-cache: "npm:^10.0.2"
+    lru-cache: "npm:^10.1.0"
     mini-css-extract-plugin: "npm:^1.6.2"
     npm-run-all: "npm:^4.1.5"
     path-to-regexp: "npm:^6.2.1"

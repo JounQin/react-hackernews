@@ -37,7 +37,7 @@
     "koa-mount": "^4.0.0",
     "koa-static-cache": "^5.1.4",
     "lodash-es": "^4.17.21",
-    "lru-cache": "^10.0.2",
+    "lru-cache": "^10.1.0",
     "path-to-regexp": "^6.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
