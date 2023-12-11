@@ -53,7 +53,7 @@
     "serialize-javascript": "^6.0.1"
   },
   "devDependencies": {
-    "@1stg/app-config": "^9.0.0",
+    "@1stg/app-config": "^9.0.1",
     "@babel/node": "^7.22.19",
     "babel-loader": "^8.3.0",
     "babel-plugin-module-resolver": "^5.0.0",
