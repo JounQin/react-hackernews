@@ -74,7 +74,7 @@
     "react-style-loader": "^2.3.0",
     "rimraf": "^5.0.5",
     "sass": "^1.69.5",
-    "sass-loader": "^10.4.1",
+    "sass-loader": "^10.5.2",
     "simple-git-hooks": "^2.9.0",
     "stylelint": "^15.11.0",
     "sw-precache-webpack-plugin": "^1.0.0",
