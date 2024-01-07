@@ -20,9 +20,6 @@ export const { resolve } = path
 export const runtimeRequire =
   // eslint-disable-next-line camelcase
   typeof __non_webpack_require__ === 'undefined'
-    ? typeof require === 'undefined'
-      ? createRequire(path.resolve('__test__.js'))
-      : // eslint-disable-next-line no-undef
-        require
+    ? createRequire(path.resolve('__test__.js'))
     : // eslint-disable-next-line camelcase
       __non_webpack_require__

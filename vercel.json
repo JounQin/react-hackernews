@@ -4,6 +4,9 @@
   "alias": [
     "react-hn.vercel.app"
   ],
+  "github": {
+    "silent": true
+  },
   "rewrites": [
     {
       "source": "/(.*)",
