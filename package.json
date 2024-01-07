@@ -67,7 +67,7 @@
     "html-minifier": "^4.0.0",
     "koa-webpack": "^6.0.0",
     "lint-staged": "^15.2.0",
-    "mini-css-extract-plugin": "^1.6.2",
+    "mini-css-extract-plugin": "^2.7.6",
     "npm-run-all2": "^6.1.1",
     "postcss-loader": "^4.3.0",
     "prettier": "^3.1.1",
