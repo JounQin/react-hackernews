@@ -1,7 +1,8 @@
-import Firebase from 'firebase/app'
-import 'firebase/database'
+import { initializeApp } from 'firebase/app'
+import { getDatabase, ref } from 'firebase/database'
 
 export function createAPI({ config, version }) {
-  Firebase.initializeApp(config)
-  return Firebase.database().ref(version)
+  const app = initializeApp(config)
+  const database = getDatabase(app)
+  return ref(database, version)
 }

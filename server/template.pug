@@ -1,29 +1,32 @@
-html(lang="en")
+html(lang='en')
   head
     title {{ title }}
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    meta(name="description" content="HackerNews clone built with React, ReactRouter & Redux, with server-side rendering")
-    meta(name="theme-color" content="#00d8ff")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    link(rel="apple-touch-icon" sizes="120x120" href="/public/logo.svg")
-    link(rel="shortcut icon" sizes="48x48" href="/public/favicon.ico")
-    link(rel="manifest" href="/public/manifest.json")
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    meta(
+      name='description',
+      content='HackerNews clone built with React, ReactRouter & Redux, with server-side rendering'
+    )
+    meta(name='theme-color', content='#00d8ff')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='apple-touch-icon', sizes='120x120', href='/public/logo.svg')
+    link(rel='shortcut icon', sizes='48x48', href='/public/favicon.ico')
+    link(rel='manifest', href='/public/manifest.json')
     style.
       #skip a {
-         position: absolute;
-         left: -10000px;
-         top: auto;
-         width: 1px;
-         height:1 px;
-         overflow: hidden;
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1 px;
+        overflow: hidden;
       }
       #skip a:focus {
-         position:static;
-         width:auto;
-         height:auto;
-       }
+        position: static;
+        width: auto;
+        height: auto;
+      }
   body
     #skip
-      a(href="#app") skip to content
+      a(href='#app') skip to content
     #app

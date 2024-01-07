@@ -14,4 +14,4 @@ export const activeIds = (state, page = 1) => {
 export const activeItems = (state, page) =>
   activeIds(state, page)
     .map(id => state.items[id])
-    .filter(_ => _)
+    .filter(Boolean)

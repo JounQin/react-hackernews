@@ -1,12 +1,15 @@
+import { ReactSSRClientPlugin } from 'react-server-renderer/client-plugin'
 import webpack from 'webpack'
 import { merge } from 'webpack-merge'
-import { ReactSSRClientPlugin } from 'react-server-renderer/client-plugin'
-import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin'
+import { GenerateSW } from 'workbox-webpack-plugin'
 
-import { __DEV__, publicPath, hasType, resolve } from './config'
-import base, { babelLoader } from './base'
+import { babelLoader, baseConfig } from './base.js'
+import { __DEV__, publicPath, hasType, resolve } from './config.js'
 
-const clientConfig = merge(base, {
+/**
+ * @type {import('webpack').Configuration}
+ */
+export const clientConfig = merge(baseConfig, {
   entry: {
     app: [resolve('src/entry-client.js')],
   },
@@ -50,16 +53,15 @@ const clientConfig = merge(base, {
 
 if (!__DEV__) {
   clientConfig.plugins.push(
-    new SWPrecacheWebpackPlugin({
+    new GenerateSW({
       cacheId: 'react-hn',
-      filename: 'service-worker.js',
-      minify: true,
-      dontCacheBustUrlsMatching: /./,
-      staticFileGlobsIgnorePatterns: [/index\.html$/, /\.map$/, /\.json$/],
+      swDest: 'service-worker.js',
+      dontCacheBustURLsMatching: /./,
+      exclude: [/index\.html$/, /\.map$/, /\.json$/],
       runtimeCaching: [
         {
           urlPattern: /^https?:\/\//,
-          handler: 'networkFirst',
+          handler: 'NetworkFirst',
         },
       ],
     }),

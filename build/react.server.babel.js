@@ -1,12 +1,15 @@
+import { ReactSSRServerPlugin } from 'react-server-renderer/server-plugin'
 import webpack from 'webpack'
 import { merge } from 'webpack-merge'
 import nodeExternals from 'webpack-node-externals'
-import { ReactSSRServerPlugin } from 'react-server-renderer/server-plugin'
 
-import { resolve } from './config'
-import base, { babelLoader } from './base'
+import { babelLoader, baseConfig } from './base.js'
+import { resolve } from './config.js'
 
-export default merge(base, {
+/**
+ * @type {import('webpack').Configuration}
+ */
+export const serverConfig = merge(baseConfig, {
   entry: resolve('src/entry-server.js'),
   resolve: {
     alias: {
@@ -33,3 +36,5 @@ export default merge(base, {
     new ReactSSRServerPlugin(),
   ],
 })
+
+export default serverConfig

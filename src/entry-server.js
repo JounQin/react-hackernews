@@ -1,11 +1,11 @@
 import React from 'react'
+import Loadable from 'react-loadable'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import { matchRoutes } from 'react-router-config'
-import Loadable from 'react-loadable'
 
-import createStore from 'store'
 import App, { routes } from 'App'
+import createStore from 'store'
 
 const preloadAll = Loadable.preloadAll()
 
@@ -58,7 +58,10 @@ export default context =>
 
     resolve(
       <Provider store={store}>
-        <StaticRouter location={ctx.url} context={context}>
+        <StaticRouter
+          location={ctx.url}
+          context={context}
+        >
           <App />
         </StaticRouter>
       </Provider>,

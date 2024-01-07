@@ -3,10 +3,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import styles from './styles'
+import styles from './styles.scss'
 
-import Spinner from 'components/Spinner'
-import Comment from 'components/Comment'
+import Comment from 'components/Comment/index.js'
+import Spinner from 'components/Spinner/index.js'
 import { fetchItems } from 'store'
 import { withSsr, host, timeAgo } from 'utils'
 
@@ -86,7 +86,11 @@ export default class ItemView extends React.PureComponent {
     return item ? (
       <div className="item-view">
         <div className="item-view-header">
-          <a href={item.url} target="_blank" rel="noopener noreferrer">
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <h1>{item.title}</h1>
           </a>
           {item.url ? <span className="host">({host(item.url)})</span> : null}
@@ -104,7 +108,10 @@ export default class ItemView extends React.PureComponent {
           {loading || !item.kids ? null : (
             <ul className="comment-children">
               {item.kids.map(id => (
-                <Comment key={id} id={id} />
+                <Comment
+                  key={id}
+                  id={id}
+                />
               ))}
             </ul>
           )}

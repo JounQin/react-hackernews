@@ -1,8 +1,8 @@
-import webpack from 'webpack'
-import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
+import FriendlyErrorsWebpackPlugin from '@soda/friendly-errors-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import webpack from 'webpack'
 
-import { NODE_ENV, __DEV__, hasType, resolve } from './config'
+import { NODE_ENV, __DEV__, hasType, resolve } from './config.js'
 
 const options = {
   sourceMap: __DEV__,
@@ -43,7 +43,10 @@ export const babelLoader = _isServer => ({
   },
 })
 
-export default {
+/**
+ * @type {import('webpack').Configuration}
+ */
+export const baseConfig = {
   mode: NODE_ENV,
   resolve: {
     alias: {

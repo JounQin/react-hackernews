@@ -6,9 +6,11 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
-import styles from './styles'
+import styles from './styles.scss'
 
 import { watchList } from 'api'
+import Item from 'components/Item/index.js'
+import Spinner from 'components/Spinner/index.js'
 import {
   activeItems,
   setLoading,
@@ -17,8 +19,6 @@ import {
   fetchListData,
 } from 'store'
 import { withSsr } from 'utils'
-import Item from 'components/Item'
-import Spinner from 'components/Spinner'
 
 @connect(
   (state, props) => ({
@@ -121,7 +121,7 @@ export default class ItemList extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { type } = this.props
+    const { history, type, match } = this.props
 
     this.unwatchList = watchList(type, ids => {
       this.props.setList(type, ids)
@@ -132,18 +132,19 @@ export default class ItemList extends React.PureComponent {
       })
     })
 
-    this.unwatchPage = this.props.history.listen(location => {
+    this.unwatchPage = history.listen(location => {
       const {
         params: { page: prevPage },
         path,
-      } = this.props.match
+      } = match
       if (
         this.isSameLocation(this.props.location, location) ||
-        !pathToRegexp(path).exec(location.pathname)
+        !pathToRegexp(path).test(location.pathname)
       ) {
         return
       }
       setTimeout(() =>
+        // eslint-disable-next-line unicorn/consistent-destructuring
         this.loadItems(this.props.match.params.page, prevPage || 1),
       )
     })
@@ -155,15 +156,9 @@ export default class ItemList extends React.PureComponent {
   }
 
   render() {
-    const { page, maxPage, hasMore } = this
-    const {
-      displayedItems,
-      displayedPage,
-      itemTransition,
-      transition,
-    } = this.state
-
-    const { loading, type } = this.props
+    const { page, maxPage, hasMore, props, state } = this
+    const { loading, type } = props
+    const { displayedItems, displayedPage, itemTransition, transition } = state
 
     return (
       <div className="news-view">
