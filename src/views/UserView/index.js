@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 
-import styles from './styles'
+import styles from './styles.scss'
 
 import { fetchUser } from 'store'
 import { withSsr, timeAgo } from 'utils'
@@ -33,9 +33,7 @@ const USER_NOT_FOUND = 'User Not Found'
   }
 
   if (!__SERVER__) {
-    return self.props
-      .fetchUser()
-      .then(() => (self.props.users[id] ? id : USER_NOT_FOUND))
+    return self.props.fetchUser().then(() => (users[id] ? id : USER_NOT_FOUND))
   }
 })
 export default class UserView extends React.PureComponent {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 
-import ItemList from './ItemList'
+import ItemList from './ItemList/index.js'
 
 import { activeItems, fetchListData } from 'store'
 
@@ -19,8 +19,7 @@ export default type => {
   )
   class ListView extends React.PureComponent {
     static propTypes = {
-      activeItems: PropTypes.array.isRequired,
-      fetchListData: PropTypes.func.isRequired,
+      match: PropTypes.object.isRequired,
     }
 
     static preload({ store, match }) {
@@ -28,7 +27,12 @@ export default type => {
     }
 
     render() {
-      return <ItemList type={type} {...this.props} />
+      return (
+        <ItemList
+          type={type}
+          {...this.props}
+        />
+      )
     }
   }
 

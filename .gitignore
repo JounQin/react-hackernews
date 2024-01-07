@@ -3,3 +3,6 @@ node_modules
 sync
 *.log
 .*cache
+.yarn/*
+!.yarn/plugins
+!.yarn/releases

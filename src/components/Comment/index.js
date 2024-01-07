@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import styles from './styles'
+import styles from './styles.scss'
 
 import { withSsr, timeAgo } from 'utils'
 
@@ -42,7 +42,10 @@ const Comment = ({ comments, id }) => {
             style={{ display: open ? 'block' : 'none' }}
           >
             {comment.kids.map(id => (
-              <Comment key={id} id={id} />
+              <Comment
+                key={id}
+                id={id}
+              />
             ))}
           </ul>
         </>

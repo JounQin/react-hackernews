@@ -1,4 +1,6 @@
 import fs from 'fs'
+import { createRequire } from 'module'
+import path from 'path'
 
 import _debug from 'debug'
 import Koa from 'koa'
@@ -8,7 +10,7 @@ import compress from 'koa-compress'
 import logger from 'koa-logger'
 import mount from 'koa-mount'
 import serve from 'koa-static-cache'
-import LRU from 'lru-cache'
+import { LRUCache } from 'lru-cache'
 import { createBundleRenderer } from 'react-server-renderer'
 
 import {
@@ -17,7 +19,9 @@ import {
   runtimeRequire,
   serverHost,
   serverPort,
-} from '../build/config'
+} from '../build/config.js'
+
+const require = createRequire(path.resolve('__test__.js'))
 
 const debug = _debug('1stg:server')
 
@@ -25,18 +29,28 @@ const template = __DEV__
   ? require('pug').renderFile(resolve('server/template.pug'), {
       pretty: true,
     })
-  : fs.readFileSync(resolve('dist/template.html'), 'utf-8')
+  : fs.readFileSync(resolve('dist/template.html'), 'utf8')
 
 const app = new Koa()
 
-let ready, renderer
+/**
+ * @type {Promise<void>}
+ */
+let ready
+/**
+ * @type {import('react-server-renderer').Renderer}
+ */
+let renderer
 
 const MAX_AGE = 1000 * 3600 * 24 * 365 // one year
 
 const STATUS_OK = 200
 const STATUS_NOT_FOUND = 404
 
-const cache = new LRU(1000)
+const cache = new LRUCache({
+  max: 1000,
+  ttl: 1000 * 60 * 15,
+})
 
 const middlewares = [
   logger(),
@@ -56,7 +70,7 @@ const middlewares = [
     if (
       ctx.method !== 'GET' ||
       ctx.url.lastIndexOf('.') > ctx.url.lastIndexOf('/') ||
-      !['*/*', 'text/html'].find(mimeType =>
+      !['*/*', 'text/html'].some(mimeType =>
         ctx.get('Accept').includes(mimeType),
       )
     ) {
@@ -77,8 +91,10 @@ const middlewares = [
           'Content-Type': 'text/html',
         })
       })
-      .on('error', e => {
-        const { status, url } = e
+      .on('error', async err => {
+        console.dir(err)
+
+        const { status, url, stack } = err
 
         if (url) {
           ctx.status = 302
@@ -90,11 +106,10 @@ const middlewares = [
 
         if (status === STATUS_NOT_FOUND) {
           return res.end('404 | Page Not Found')
-        } else {
-          res.end('500 | Internal Server Error')
-          debug(`error during render : ${url}`)
-          debug(e.stack)
         }
+        res.end('500 | Internal Server Error')
+        debug(`error during render : ${url}`)
+        debug(stack)
       })
       .pipe(res)
   },
@@ -109,15 +124,20 @@ const createRenderer = (bundle, options) =>
   })
 
 if (__DEV__) {
-  const { readyPromise, webpackMiddlewarePromise } = require('./dev').default(
-    ({ bundle, clientManifest }) => {
-      renderer = createRenderer(bundle, {
-        clientManifest,
-      })
-    },
-  )
-  ready = readyPromise
-  webpackMiddlewarePromise.then(webpackMiddleware => app.use(webpackMiddleware))
+  import('./dev.js')
+    .then(({ default: dev }) => {
+      let webpackMiddlewarePromise
+      ;({ readyPromise: ready, webpackMiddlewarePromise } = dev(
+        ({ bundle, clientManifest }) => {
+          renderer = createRenderer(bundle, {
+            clientManifest,
+          })
+        },
+      ))
+      return webpackMiddlewarePromise
+    })
+    // eslint-disable-next-line unicorn/prefer-top-level-await
+    .then(webpackMiddleware => app.use(webpackMiddleware))
 } else {
   renderer = createRenderer(
     runtimeRequire(resolve('dist/react-ssr-server-bundle.json')),

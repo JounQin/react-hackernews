@@ -1,13 +1,17 @@
-const fs = require('fs')
-const path = require('path')
+import { writeFileSync } from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-const { minify } = require('html-minifier')
-const pug = require('pug')
+import { minify } from 'html-minifier'
+import { renderFile } from 'pug'
 
-const result = minify(pug.renderFile('server/template.pug'), {
+const result = minify(renderFile('server/template.pug'), {
   collapseWhitespace: true,
   minifyCSS: true,
   minifyJS: true,
 })
 
-fs.writeFileSync(path.resolve(__dirname, '../dist/template.html'), result)
+writeFileSync(
+  path.resolve(fileURLToPath(import.meta.url), '../../dist/template.html'),
+  result,
+)

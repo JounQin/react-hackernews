@@ -1,5 +1,5 @@
-import TYPES from './types'
-import { activeIds } from './selectors'
+import { activeIds } from './selectors.js'
+import TYPES from './types.js'
 
 import {
   fetchIdsByType as _fetchIdsByType,
@@ -51,17 +51,12 @@ export const fetchItems = ids => (dispatch, getState) => {
     if (!item) {
       return true
     }
-    if (now - item.__lastUpdated > 1000 * 60 * 3) {
-      return true
-    }
-    return false
+    return now - item.__lastUpdated > 1000 * 60 * 3
   })
 
-  if (ids.length > 0) {
-    return _fetchItems(ids).then(items => dispatch(setItems(items)))
-  } else {
-    return Promise.resolve()
-  }
+  return ids.length > 0
+    ? _fetchItems(ids).then(items => dispatch(setItems(items)))
+    : Promise.resolve()
 }
 
 export const ensureActiveItems = page => (dispatch, getState) =>

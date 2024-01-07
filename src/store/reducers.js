@@ -1,20 +1,24 @@
-import TYPES from './types'
+import TYPES from './types.js'
 
 export const loading = (state = false, action) => {
   switch (action.type) {
-    case TYPES.SET_LOADING:
+    case TYPES.SET_LOADING: {
       return action.loading
-    default:
+    }
+    default: {
       return state
+    }
   }
 }
 
 export const activeType = (state = null, action) => {
   switch (action.type) {
-    case TYPES.SET_ACTIVE_TYPE:
+    case TYPES.SET_ACTIVE_TYPE: {
       return action.activeType
-    default:
+    }
+    default: {
       return state
+    }
   }
 }
 
@@ -22,7 +26,7 @@ export const itemsPerPage = (state = 20) => state
 
 export const items = (state = {}, action) => {
   switch (action.type) {
-    case TYPES.SET_ITEMS:
+    case TYPES.SET_ITEMS: {
       return {
         ...state,
         ...action.items.reduce((result, item) => {
@@ -32,24 +36,29 @@ export const items = (state = {}, action) => {
           return result
         }, {}),
       }
-    default:
+    }
+    default: {
       return state
+    }
   }
 }
 
 export const users = (state = {}, action) => {
   switch (action.type) {
-    case TYPES.SET_USER:
+    case TYPES.SET_USER: {
       return {
         ...state,
         [action.id]: action.user || false,
       }
-    default:
+    }
+    default: {
       return state
+    }
   }
 }
 
 export const lists = (
+  // eslint-disable-next-line unicorn/no-object-as-default-parameter
   state = {
     top: [],
     new: [],
@@ -60,12 +69,14 @@ export const lists = (
   action,
 ) => {
   switch (action.type) {
-    case TYPES.SET_LIST:
+    case TYPES.SET_LIST: {
       return {
         ...state,
         [action.listType]: action.ids,
       }
-    default:
+    }
+    default: {
       return state
+    }
   }
 }

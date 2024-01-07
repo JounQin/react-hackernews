@@ -7,20 +7,5 @@
         "isTSX": true
       }
     ]
-  ],
-  "plugins": [
-    [
-      "module-resolver",
-      {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".scss"
-        ],
-        "root": [
-          "./src"
-        ]
-      }
-    ]
   ]
 }

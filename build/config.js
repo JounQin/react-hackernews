@@ -1,3 +1,4 @@
+import { createRequire } from 'module'
 import path from 'path'
 
 export const NODE_ENV = process.env.NODE_ENV || 'development'
@@ -17,8 +18,11 @@ export const publicPath = '/'
 export const { resolve } = path
 
 export const runtimeRequire =
-  // eslint-disable-next-line babel/camelcase
+  // eslint-disable-next-line camelcase
   typeof __non_webpack_require__ === 'undefined'
-    ? require
-    : // eslint-disable-next-line babel/camelcase
+    ? typeof require === 'undefined'
+      ? createRequire(path.resolve('__test__.js'))
+      : // eslint-disable-next-line no-undef
+        require
+    : // eslint-disable-next-line camelcase
       __non_webpack_require__

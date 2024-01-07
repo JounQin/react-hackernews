@@ -1,23 +1,23 @@
 import { startCase } from 'lodash'
 import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
+import Loadable from 'react-loadable'
 import { Redirect } from 'react-router'
 import { renderRoutes } from 'react-router-config'
 import { withRouter, NavLink } from 'react-router-dom'
 import { Transition, TransitionGroup } from 'react-transition-group'
-import Loadable from 'react-loadable'
 
-import 'styles/app'
+import 'styles/app.scss'
 
 const resolver = loader =>
-  // eslint-disable-next-line babel/new-cap
+  // eslint-disable-next-line @babel/new-cap
   Loadable({
     loader,
     loading: () => null,
   })
 
 const createListView = id =>
-  resolver(() => import('views/CreateListView').then(m => m.default(id)))
+  resolver(() => import('views/CreateListView.js').then(m => m.default(id)))
 
 const RedirectToTop = () => <Redirect to="/top" />
 
@@ -51,11 +51,11 @@ export const routes = [
   },
   {
     path: '/item/:id(\\d+)',
-    component: resolver(() => import('views/ItemView')),
+    component: resolver(() => import('views/ItemView/index.js')),
   },
   {
     path: '/user/:id',
-    component: resolver(() => import('views/UserView')),
+    component: resolver(() => import('views/UserView/index.js')),
   },
   {
     path: '*',
@@ -99,12 +99,22 @@ export default class App extends React.PureComponent {
       <>
         <header className="header">
           <div className="header-content">
-            <NavLink to="/" exact={true}>
-              <img className="logo" src="/public/logo.svg" alt="React Logo" />
+            <NavLink
+              to="/"
+              exact={true}
+            >
+              <img
+                className="logo"
+                src="/public/logo.svg"
+                alt="React Logo"
+              />
             </NavLink>
             <nav className="inner">
               {['top', 'new', 'show', 'ask', 'job'].map(route => (
-                <NavLink key={route} to={`/${route}`}>
+                <NavLink
+                  key={route}
+                  to={`/${route}`}
+                >
                   {startCase(route)}
                 </NavLink>
               ))}
@@ -128,7 +138,10 @@ export default class App extends React.PureComponent {
             unmountOnExit={true}
           >
             {status => (
-              <div className="view" style={transitionStyles[status]}>
+              <div
+                className="view"
+                style={transitionStyles[status]}
+              >
                 {renderRoutes(routes, null, { location })}
               </div>
             )}

@@ -1,11 +1,12 @@
-import React from 'react'
-import { hydrate } from 'react-dom'
-import { Provider } from 'react-redux'
-import Loadable from 'react-loadable'
 import { ConnectedRouter } from 'connected-react-router'
+import React from 'react'
+// eslint-disable-next-line react/no-deprecated, sonar/deprecation
+import { hydrate } from 'react-dom'
+import Loadable from 'react-loadable'
+import { Provider } from 'react-redux'
 
-import createStore, { history } from 'store'
 import App from 'App'
+import createStore, { history } from 'store'
 
 const store = createStore(window.__INITIAL_STATE__)
 
@@ -13,23 +14,22 @@ if (!__DEV__) {
   delete window.__INITIAL_STATE__
 }
 
-const render = () => {
-  const app = (
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <App />
-      </ConnectedRouter>
-    </Provider>
+const render = () =>
+  Loadable.preloadReady().then(() =>
+    hydrate(
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
+      </Provider>,
+      document.querySelector('#app'),
+    ),
   )
-
-  return Loadable.preloadReady().then(() =>
-    hydrate(app, document.querySelector('#app')),
-  )
-}
 
 render()
 
 if (__DEV__) {
+  // eslint-disable-next-line no-undef
   module.hot.accept('App', render)
 }
 

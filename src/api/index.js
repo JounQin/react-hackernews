@@ -1,9 +1,19 @@
+/**
+ * @typedef {import('firebase/database').DatabaseReference} DatabaseReference
+ * @typedef { import('lru-cache').LRUCache } LRUCache
+ * @typedef {DatabaseReference & { onServer?: boolean; cachedItems?: LRUCache; cachedIds?: Record<string, unknown> }} DatabaseApi
+ */
+
 // this is aliased in webpack config based on server/client build
 // eslint-disable-next-line import/no-unresolved
 import { createAPI } from 'create-api'
+import { child, get, onValue } from 'firebase/database'
 
 const logRequests = !!process.env.DEBUG_API
 
+/**
+ * @type {DatabaseApi}
+ */
 const api = createAPI({
   version: '/v0',
   config: {
@@ -18,46 +28,40 @@ if (api.onServer) {
 }
 
 function warmCache() {
-  fetchItems((api.cachedIds.top || []).slice(0, 30))
+  fetchItems((api.cachedIds?.top || []).slice(0, 30))
   setTimeout(warmCache, 1000 * 60 * 15)
 }
 
-function fetch(child) {
+async function fetch(path) {
   if (logRequests) {
-    console.log(`fetching ${child}...`)
-  }
-  const cache = api.cachedItems
-  if (cache && cache.has(child)) {
-    if (logRequests) {
-      console.log(`cache hit for ${child}.`)
-    }
-    return Promise.resolve(cache.get(child))
+    console.log(`fetching ${path}...`)
   }
 
-  return new Promise((resolve, reject) => {
-    api.child(child).once(
-      'value',
-      snapshot => {
-        const val = snapshot.val()
-        // mark the timestamp when this item is cached
-        if (val) {
-          val.__lastUpdated = Date.now()
-        }
-        if (cache) {
-          cache.set(child, val)
-        }
-        if (logRequests) {
-          console.log(`fetched ${child}.`)
-        }
-        resolve(val)
-      },
-      reject,
-    )
-  })
+  const cache = api.cachedItems
+  if (cache?.has(path)) {
+    if (logRequests) {
+      console.log(`cache hit for ${path}.`)
+    }
+    return cache.get(path)
+  }
+
+  const snapshot = await get(child(api, path))
+  const val = snapshot.val()
+  // mark the timestamp when this item is cached
+  if (val) {
+    val.__lastUpdated = Date.now()
+  }
+  if (cache) {
+    cache.set(path, val)
+  }
+  if (logRequests) {
+    console.log(`fetched ${path}.`)
+  }
+  return val
 }
 
 export function fetchIdsByType(type) {
-  return api.cachedIds && api.cachedIds[type]
+  return api.cachedIds?.[type]
     ? Promise.resolve(api.cachedIds[type])
     : fetch(`${type}stories`)
 }
@@ -76,16 +80,12 @@ export function fetchUser(id) {
 
 export function watchList(type, cb) {
   let first = true
-  const ref = api.child(`${type}stories`)
-  const handler = snapshot => {
+  const ref = child(api, `${type}stories`)
+  return onValue(ref, snapshot => {
     if (first) {
       first = false
     } else {
       cb(snapshot.val())
     }
-  }
-  ref.on('value', handler)
-  return () => {
-    ref.off('value', handler)
-  }
+  })
 }
