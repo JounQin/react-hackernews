@@ -5988,7 +5988,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-loader@npm:^8.2.5":
+"babel-loader@npm:^8.3.0":
   version: 8.3.0
   resolution: "babel-loader@npm:8.3.0"
   dependencies:
@@ -17913,7 +17913,7 @@ __metadata:
     "@soda/friendly-errors-webpack-plugin": ^1.8.1
     "@types/webpack": ^4.41.38
     "@unts/patch-package": ^8.0.0
-    babel-loader: ^8.2.5
+    babel-loader: ^8.3.0
     connected-react-router: ^6.9.3
     core-js: ^3.35.0
     cross-env: ^7.0.3
