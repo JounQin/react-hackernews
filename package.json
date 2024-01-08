@@ -60,7 +60,7 @@
     "@soda/friendly-errors-webpack-plugin": "^1.8.1",
     "@types/webpack": "^4.41.38",
     "@unts/patch-package": "^8.0.0",
-    "babel-loader": "^8.2.5",
+    "babel-loader": "^8.3.0",
     "css-loader": "^5.2.7",
     "eslint": "^8.56.0",
     "eslint-import-resolver-typescript": "^3.6.1",
