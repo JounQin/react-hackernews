@@ -51,7 +51,7 @@
     "react-transition-group": "^4.4.5",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
-    "serialize-javascript": "^6.0.1"
+    "serialize-javascript": "^6.0.2"
   },
   "devDependencies": {
     "@1stg/app-config": "^10.0.1",
