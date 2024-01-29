@@ -724,21 +724,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/node@npm:^7.22.19":
-  version: 7.22.19
-  resolution: "@babel/node@npm:7.22.19"
+"@babel/node@npm:^7.23.9":
+  version: 7.23.9
+  resolution: "@babel/node@npm:7.23.9"
   dependencies:
-    "@babel/register": "npm:^7.22.15"
-    commander: "npm:^4.0.1"
-    core-js: "npm:^3.30.2"
-    node-environment-flags: "npm:^1.0.5"
-    regenerator-runtime: "npm:^0.14.0"
-    v8flags: "npm:^3.1.1"
+    "@babel/register": ^7.23.7
+    commander: ^4.0.1
+    core-js: ^3.30.2
+    node-environment-flags: ^1.0.5
+    regenerator-runtime: ^0.14.0
+    v8flags: ^3.1.1
   peerDependencies:
     "@babel/core": ^7.0.0-0
   bin:
     babel-node: ./bin/babel-node.js
-  checksum: e184336bd83b8af09f22abc65ea8e33abaa6c0d5c4e0a15782faa9f431900e3782a928c8aa77cfd1873fc93fdbe1008c9d2fac4b4e890a2d8643fe041146283f
+  checksum: 24b0fdd6594d88f7cffcd58e771cda67dc535c1e27242e66095885801716f3a4a34ea230b4b075c7f8e227ccebd24b66eb6a7622ee34984db73c16efb735efbe
   languageName: node
   linkType: hard
 
@@ -2157,18 +2157,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/register@npm:^7.22.15":
-  version: 7.22.15
-  resolution: "@babel/register@npm:7.22.15"
+"@babel/register@npm:^7.23.7":
+  version: 7.23.7
+  resolution: "@babel/register@npm:7.23.7"
   dependencies:
-    clone-deep: "npm:^4.0.1"
-    find-cache-dir: "npm:^2.0.0"
-    make-dir: "npm:^2.1.0"
-    pirates: "npm:^4.0.5"
-    source-map-support: "npm:^0.5.16"
+    clone-deep: ^4.0.1
+    find-cache-dir: ^2.0.0
+    make-dir: ^2.1.0
+    pirates: ^4.0.6
+    source-map-support: ^0.5.16
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 5497be6773608cd2d874210edd14499fce464ddbea170219da55955afe4c9173adb591164193458fd639e43b7d1314088a6186f4abf241476c59b3f0da6afd6f
+  checksum: c72a6d4856ef04f13490370d805854d2d98a77786bfaec7d85e2c585e1217011c4f3df18197a890e14520906c9111bef95551ba1a9b59c88df4dfc2dfe2c8d1b
   languageName: node
   linkType: hard
 
@@ -16390,10 +16390,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pirates@npm:^4.0.5":
-  version: 4.0.5
-  resolution: "pirates@npm:4.0.5"
-  checksum: c9994e61b85260bec6c4fc0307016340d9b0c4f4b6550a957afaaff0c9b1ad58fbbea5cfcf083860a25cb27a375442e2b0edf52e2e1e40e69934e08dcc52d227
+"pirates@npm:^4.0.6":
+  version: 4.0.6
+  resolution: "pirates@npm:4.0.6"
+  checksum: 46a65fefaf19c6f57460388a5af9ab81e3d7fd0e7bc44ca59d753cb5c4d0df97c6c6e583674869762101836d68675f027d60f841c105d72734df9dfca97cbcc6
   languageName: node
   linkType: hard
 
@@ -17915,7 +17915,7 @@ __metadata:
   resolution: "react-hackernews@workspace:."
   dependencies:
     "@1stg/app-config": ^10.0.1
-    "@babel/node": ^7.22.19
+    "@babel/node": ^7.23.9
     "@commitlint/cli": ^18.4.4
     "@soda/friendly-errors-webpack-plugin": ^1.8.1
     "@types/webpack": ^4.41.38
