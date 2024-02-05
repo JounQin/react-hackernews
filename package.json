@@ -24,10 +24,10 @@
   },
   "dependencies": {
     "connected-react-router": "^6.9.3",
-    "core-js": "^3.35.0",
+    "core-js": "^3.35.1",
     "cross-env": "^7.0.3",
     "debug": "^4.3.4",
-    "firebase": "^10.7.1",
+    "firebase": "^10.7.2",
     "history": "^4.10.1",
     "hoist-non-react-statics": "^3.3.2",
     "koa": "^2.15.0",
@@ -43,7 +43,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-loadable": "^5.5.0",
-    "react-redux": "^9.0.4",
+    "react-redux": "^9.1.0",
     "react-router": "^5.3.4",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.3.4",
@@ -51,26 +51,26 @@
     "react-transition-group": "^4.4.5",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
-    "serialize-javascript": "^6.0.1"
+    "serialize-javascript": "^6.0.2"
   },
   "devDependencies": {
     "@1stg/app-config": "^10.0.1",
-    "@babel/node": "^7.22.19",
+    "@babel/node": "^7.23.9",
     "@commitlint/cli": "^18.4.4",
     "@soda/friendly-errors-webpack-plugin": "^1.8.1",
     "@types/webpack": "^4.41.38",
     "@unts/patch-package": "^8.0.0",
-    "babel-loader": "^8.2.5",
+    "babel-loader": "^8.3.0",
     "css-loader": "^5.2.7",
     "eslint": "^8.56.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "html-minifier": "^4.0.0",
     "koa-webpack": "^6.0.0",
-    "lint-staged": "^15.2.0",
+    "lint-staged": "^15.2.1",
     "mini-css-extract-plugin": "^1.6.2",
-    "npm-run-all2": "^6.1.1",
+    "npm-run-all2": "^6.1.2",
     "postcss-loader": "^4.3.0",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.4",
     "prop-types": "^15.8.1",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
@@ -87,7 +87,7 @@
     "workbox-webpack-plugin": "^7.0.0"
   },
   "resolutions": {
-    "prettier": "^3.1.1"
+    "prettier": "^3.2.5"
   },
   "browserslist": [
     "extends @1stg/browserslist-config"
