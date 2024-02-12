@@ -17926,7 +17926,7 @@ __metadata:
     npm-run-all2: ^6.1.2
     path-to-regexp: ^6.2.1
     postcss-loader: ^4.3.0
-    prettier: ^3.2.4
+    prettier: ^3.2.5
     prop-types: ^15.8.1
     pug: ^3.0.2
     pug-plain-loader: ^1.1.0
