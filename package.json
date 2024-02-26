@@ -7,7 +7,7 @@
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "private": true,
-  "packageManager": "yarn@3.7.0",
+  "packageManager": "yarn@3.8.0",
   "scripts": {
     "build": "rimraf dist && cross-env DEBUG='1stg:*' NODE_ENV=production run-p build:react:client build:react:server build:server build:template",
     "build:react:client": "webpack --config=build/react.client.babel.js --color --progress",
