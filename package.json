@@ -30,7 +30,7 @@
     "firebase": "^10.7.2",
     "history": "^4.10.1",
     "hoist-non-react-statics": "^3.3.2",
-    "koa": "^2.15.0",
+    "koa": "^2.15.3",
     "koa-cash": "^4.1.1",
     "koa-compose": "^4.1.0",
     "koa-compress": "^5.1.1",
