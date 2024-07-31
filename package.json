@@ -75,7 +75,7 @@
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "react-style-loader": "^3.0.1",
-    "rimraf": "^5.0.5",
+    "rimraf": "^5.0.10",
     "sass": "^1.71.0",
     "sass-loader": "^10.5.2",
     "simple-git-hooks": "^2.9.0",
