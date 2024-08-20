@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "connected-react-router": "^6.9.3",
-    "core-js": "^3.35.1",
+    "core-js": "^3.38.1",
     "cross-env": "^7.0.3",
     "debug": "^4.3.4",
     "firebase": "^10.7.2",
