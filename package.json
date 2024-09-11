@@ -39,7 +39,7 @@
     "koa-static-cache": "^5.1.4",
     "lodash-es": "^4.17.21",
     "lru-cache": "^10.1.0",
-    "path-to-regexp": "^6.2.1",
+    "path-to-regexp": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-loadable": "^5.5.0",
