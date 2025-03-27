@@ -63,7 +63,7 @@
     "babel-loader": "^8.3.0",
     "css-loader": "^5.2.7",
     "eslint": "^8.56.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-import-resolver-typescript": "^3.10.0",
     "html-minifier": "^4.0.0",
     "koa-webpack": "^6.0.0",
     "lint-staged": "^15.2.2",
