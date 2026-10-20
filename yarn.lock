@@ -17829,19 +17829,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pug-code-gen@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "pug-code-gen@npm:3.0.2"
+"pug-code-gen@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "pug-code-gen@npm:3.0.4"
   dependencies:
-    constantinople: "npm:^4.0.1"
-    doctypes: "npm:^1.1.0"
-    js-stringify: "npm:^1.0.2"
-    pug-attrs: "npm:^3.0.0"
-    pug-error: "npm:^2.0.0"
-    pug-runtime: "npm:^3.0.0"
-    void-elements: "npm:^3.1.0"
-    with: "npm:^7.0.0"
-  checksum: 1644d3a4d673392794248749eb146299704639a8197746454b7d03b240b83ee102f25b76d203381501e283be3927ab01eb3f4563ff51c45a478de1f3435a400d
+    constantinople: ^4.0.1
+    doctypes: ^1.1.0
+    js-stringify: ^1.0.2
+    pug-attrs: ^3.0.0
+    pug-error: ^2.1.0
+    pug-runtime: ^3.0.1
+    void-elements: ^3.1.0
+    with: ^7.0.0
+  checksum: d48f436bf39a31992e9e8313ddbd7fb2483d256ea602532aa656a5eb80f6173844611f8c43679f2a8e2fd31ede5b7b4fd4162bccc5995f219fa05806e4d5ce61
   languageName: node
   linkType: hard
 
@@ -17849,6 +17849,13 @@ __metadata:
   version: 2.0.0
   resolution: "pug-error@npm:2.0.0"
   checksum: c5372d018c897c1d6a141dd803c50957feecfda1f3d84a6adc6149801315d6c7f8c28b05f3e186d98d774fc9718699d1e1caa675630dd3c4453f8c5ec4e4a986
+  languageName: node
+  linkType: hard
+
+"pug-error@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "pug-error@npm:2.1.0"
+  checksum: e084890365f1c03a828437c1dcf641598f5754bc0fdde625a8b2529c52fbda0caa89e0e29e9124d665cfd3915bb8916011787861930a0dcf250d46e1a33c1e5c
   languageName: node
   linkType: hard
 
@@ -17941,18 +17948,18 @@ __metadata:
   linkType: hard
 
 "pug@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "pug@npm:3.0.2"
+  version: 3.0.4
+  resolution: "pug@npm:3.0.4"
   dependencies:
-    pug-code-gen: "npm:^3.0.2"
-    pug-filters: "npm:^4.0.0"
-    pug-lexer: "npm:^5.0.1"
-    pug-linker: "npm:^4.0.0"
-    pug-load: "npm:^3.0.0"
-    pug-parser: "npm:^6.0.0"
-    pug-runtime: "npm:^3.0.1"
-    pug-strip-comments: "npm:^2.0.0"
-  checksum: 3e1a3d48897c0c7dedd4f959ce8afaf6417a63756b149e1b5382bef16de5792ec7c7ae6a7d41641059cb149520f20b0d1ecf57014c0661526e96f0bad88541e5
+    pug-code-gen: ^3.0.4
+    pug-filters: ^4.0.0
+    pug-lexer: ^5.0.1
+    pug-linker: ^4.0.0
+    pug-load: ^3.0.0
+    pug-parser: ^6.0.0
+    pug-runtime: ^3.0.1
+    pug-strip-comments: ^2.0.0
+  checksum: ffc38f12a963083a9db603a51bcfd7d0706f5b0d1ba2bbab2895acf9b8799073b26bc50910ce3247ca58d5c0ec998c6a96e3a8b5fb4c940c2433392625dc790f
   languageName: node
   linkType: hard
 
